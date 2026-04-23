@@ -1,0 +1,11 @@
+#!/bin/sh
+# Remove Cursor commit trailers if the IDE/CLI still injects them.
+# Enable for this clone: git config core.hooksPath scripts/git-hooks
+msg=${1:?}
+[ -f "$msg" ] || exit 0
+tmp=$(mktemp "${TMPDIR:-/tmp}/prepare-commit-msg.XXXXXX")
+awk '
+  /^[Mm]ade-[Ww]ith:[[:space:]]*[Cc]ursor/ { next }
+  /cursoragent@cursor/ { next }
+  { print }
+' "$msg" >"$tmp" && mv "$tmp" "$msg"

@@ -1,0 +1,10 @@
+{
+  "name": "The Vow Between",
+  "short_name": "Vow Between",
+  "description": "A modular anthology of interactive short stories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0a08",
+  "theme_color": "#0b0a08",
+  "icons": []
+}
