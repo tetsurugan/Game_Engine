@@ -7,23 +7,52 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build / production output
 dist
 dist-ssr
+
+# Vite
 .vite
+vite.config.*.timestamp-*
+
+# Environment & secrets (keep .env.example tracked)
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+
+# Tests & coverage
 coverage
+
+# TypeScript incremental build (if emitted outside node_modules)
+*.tsbuildinfo
+
+# Linters & caches
+.eslintcache
+.cache
+.parcel-cache
+
+# Optional npm pack output
+*.tgz
+
+# Local-only overrides
 *.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
