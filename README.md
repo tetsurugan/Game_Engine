@@ -1,13 +1,26 @@
-# The Vow Between — POV Anthology Engine
+# POV Project
 
-**Working repo name:** use **`pov-project`** (or your org’s equivalent) on GitHub under **tetsurugan**.
+POV Project is a modular interactive anthology engine built for browser and mobile-browser play.
 
-## What this is
+It focuses on persistent world memory, branching aftermath, hidden truth vs belief, witness perspectives, and cross-story continuity through echoes, world consequences, and relational interpretation.
 
-- A **modular interactive anthology engine**: data-driven stories on one runtime, not a single branching quiz.
-- **Browser / mobile-browser MVP**: responsive UI, touch-friendly choices, light PWA manifest (`public/manifest.webmanifest`); no native app stack.
-- **Persistent world state** per player: `localStorage` profile with **echoes**, **world flags**, **world consequence marks**, **completed endings**, in-progress runtime — see `src/engine/storage.ts`.
-- **Narrative systems** in the engine: **hidden truth** vs **belief**, **continuation / variant** metadata, **world consequences** (marks, flags), **story surfacing** (open, rumor, teaser, gated), **personality** lanes where authored, and **`requiresAnyFlags`** OR-gates for aftermath consumers.
+Current playable proof lanes include:
+
+- Paladin Promise and its aftermath cluster
+- Gyre mythic anchor and survivor aftermath
+- Verge modern/family power anchor
+- Rumor Girl grounded obsession/rumor lane
+
+## MVP direction
+
+The current MVP target is a curated anthology slice for web:
+
+- desktop browser playable
+- mobile browser playable
+- persistent profile/world memory
+- a small set of strong interconnected modules
+
+Player-facing anthology title in the app: **The Vow Between**.
 
 ## Shipped proof lanes (content)
 
@@ -20,13 +33,7 @@
 
 **Planning & doctrine** live under [`docs/planning/`](docs/planning/) — start with [`design_doctrine.md`](docs/planning/design_doctrine.md), [`branch_scope_doctrine.md`](docs/planning/branch_scope_doctrine.md), [`eras_and_scales.md`](docs/planning/eras_and_scales.md).
 
----
-
-A modular, web-based interactive story engine built in React + TypeScript.
-
-The design goal is not a branching-quiz app. It's an anthology where
-different stories can have different relationships to player agency (stable,
-pressured, distorted, possessed, witness) — **internal** labels; players see titles, tone, and unlock hints.
+The design goal is not a branching-quiz app. It is an anthology where different stories can have different relationships to player agency (`stable`, `pressured`, `distorted`, `possessed`, `witness`) — **internal** labels; players see titles, tone, and unlock hints.
 
 ---
 
@@ -53,17 +60,17 @@ Progress is persisted to `localStorage` under the key `pov.profile.v1`.
 
 ---
 
-## First push to GitHub (example: `tetsurugan/pov-project`)
+## First push to GitHub (example: `tetsurugan/Game_Engine`)
 
-Create an empty repo on GitHub named **`pov-project`**, then from this folder:
+Create an empty repo on GitHub (any name you like), then from this folder:
 
 ```bash
 git init
 git add .
 git commit -m "Initial anthology engine MVP foundation"
 git branch -M main
-git remote add origin git@github.com:tetsurugan/pov-project.git
-# or: git remote add origin https://github.com/tetsurugan/pov-project.git
+git remote add origin git@github.com:tetsurugan/Game_Engine.git
+# or: git remote add origin https://github.com/tetsurugan/Game_Engine.git
 git push -u origin main
 ```
 
