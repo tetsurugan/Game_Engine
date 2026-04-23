@@ -13,15 +13,15 @@ export function ProfilePage() {
 
   return (
     <main className="page-shell max-w-2xl">
-      <Link to="/" className="back-nav">
+      <Link to="/" className="back-nav -ml-1 pl-1">
         ← Home
       </Link>
-      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 mb-8 sm:mt-4 sm:mb-10">
+      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 mb-8 sm:mt-4 sm:mb-10 text-balance">
         Profile
       </h1>
 
-      <section className="mb-8 sm:mb-10">
-        <h2 className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mb-3">
+      <section className="mb-9 sm:mb-10">
+        <h2 className="text-xs uppercase tracking-[0.28em] text-parchment-200/50 font-sans mb-3 pb-2 border-b border-parchment-200/10">
           Echoes
         </h2>
         {profile.globalEchoes.length === 0 ? (
@@ -42,8 +42,8 @@ export function ProfilePage() {
         )}
       </section>
 
-      <section className="mb-8 sm:mb-10">
-        <h2 className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mb-3">
+      <section className="mb-9 sm:mb-10">
+        <h2 className="text-xs uppercase tracking-[0.28em] text-parchment-200/50 font-sans mb-3 pb-2 border-b border-parchment-200/10">
           Completed Stories
         </h2>
         {Object.keys(profile.completedEndings).length === 0 ? (
@@ -57,7 +57,7 @@ export function ProfilePage() {
               return (
                 <li
                   key={storyId}
-                  className="rounded-sm border border-parchment-200/10 p-3 sm:p-4 bg-ink-800/40"
+                  className="rounded-sm border border-parchment-200/12 p-4 sm:p-4 bg-ink-800/40"
                 >
                   <p className="font-serif text-base sm:text-lg text-parchment-50 break-words">
                     {story?.title ?? storyId}
@@ -80,8 +80,8 @@ export function ProfilePage() {
       </section>
 
       {worldFlagsOn.length > 0 ? (
-        <section className="mb-8 sm:mb-10">
-          <h2 className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mb-3">
+        <section className="mb-9 sm:mb-10">
+          <h2 className="text-xs uppercase tracking-[0.28em] text-parchment-200/50 font-sans mb-3 pb-2 border-b border-parchment-200/10">
             World flags
           </h2>
           <p className="text-parchment-200/55 text-sm mb-2 leading-relaxed">
@@ -101,8 +101,8 @@ export function ProfilePage() {
       ) : null}
 
       {marks.length > 0 ? (
-        <section className="mb-8 sm:mb-10">
-          <h2 className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mb-3">
+        <section className="mb-9 sm:mb-10">
+          <h2 className="text-xs uppercase tracking-[0.28em] text-parchment-200/50 font-sans mb-3 pb-2 border-b border-parchment-200/10">
             Consequence marks
           </h2>
           <p className="text-parchment-200/55 text-sm mb-2 leading-relaxed">
@@ -123,7 +123,7 @@ export function ProfilePage() {
 
       <button
         type="button"
-        className="btn w-full sm:w-auto touch-manipulation"
+        className="btn w-full sm:w-auto touch-manipulation mt-4 border-vow-broken/40 text-parchment-200/90 hover:border-vow-broken/60"
         onClick={() => {
           if (
             confirm(

@@ -20,7 +20,7 @@ const stateLabel: Record<VowState, string> = {
 export function VowPanel({ story, vowStates }: Props) {
   if (!story.vows || story.vows.length === 0) return null;
   return (
-    <aside className="rounded-sm border border-parchment-200/10 bg-ink-800/40 p-4">
+    <aside className="rounded-sm border border-parchment-200/10 bg-ink-800/40 p-3 sm:p-4">
       <h3 className="text-xs uppercase tracking-[0.25em] text-parchment-200/50 font-sans mb-3">
         Vows
       </h3>

@@ -8,11 +8,11 @@ interface Props {
 
 export function EndingScreen({ ending, onRestart, onReturn }: Props) {
   return (
-    <article className="max-w-2xl mx-auto min-w-0">
+    <article className="max-w-2xl mx-auto min-w-0 pb-6">
       <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans">
         Ending
       </p>
-      <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment-50 mt-1 mb-4 sm:mb-6 break-words">
+      <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment-50 mt-1 mb-4 sm:mb-6 break-words text-balance">
         {ending.title}
       </h2>
       <div className="prose-story mb-6 sm:mb-8 max-w-prose">
@@ -39,11 +39,11 @@ export function EndingScreen({ ending, onRestart, onReturn }: Props) {
         </div>
       )}
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <button type="button" className="btn w-full sm:w-auto" onClick={onReturn}>
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap pt-2">
+        <button type="button" className="btn w-full sm:w-auto touch-manipulation" onClick={onReturn}>
           Return to stories
         </button>
-        <button type="button" className="btn btn-primary w-full sm:w-auto" onClick={onRestart}>
+        <button type="button" className="btn btn-primary w-full sm:w-auto touch-manipulation" onClick={onRestart}>
           Begin again
         </button>
       </div>

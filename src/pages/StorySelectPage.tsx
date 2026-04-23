@@ -17,25 +17,22 @@ export function StorySelectPage() {
 
   return (
     <main className="page-shell max-w-3xl">
-      <Link to="/" className="back-nav">
+      <Link to="/" className="back-nav -ml-1 pl-1">
         ← Home
       </Link>
-      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 mb-2 sm:mt-4 sm:mb-3">
+      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 mb-2 sm:mt-4 sm:mb-3 text-balance">
         Stories
       </h1>
-      <p className="text-parchment-200/70 text-sm sm:text-base mb-8 sm:mb-10 max-w-xl leading-relaxed">
+      <p className="text-parchment-200/75 text-sm sm:text-base mb-8 sm:mb-10 max-w-xl leading-relaxed">
         Choose where to begin. What you finish here may be remembered later.
       </p>
 
       {rumors.length > 0 ? (
-        <section className="mb-8 sm:mb-10" aria-labelledby="browse-rumors">
-          <h2
-            id="browse-rumors"
-            className="text-xs uppercase tracking-[0.28em] text-parchment-200/40 font-sans mb-3 sm:mb-4"
-          >
+        <section className="mb-10 sm:mb-12" aria-labelledby="browse-rumors">
+          <h2 id="browse-rumors" className="browse-section-label">
             Rumors
           </h2>
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-4">
             {rumors.map(({ story, browse }) => {
               const p = browse.surfacing.playerFacing;
               const line = p.rumorText ?? "";
@@ -43,9 +40,9 @@ export function StorySelectPage() {
                 <li key={story.id}>
                   <Link
                     to={`/stories/${story.id}`}
-                    className="block min-h-[48px] rounded-sm border border-parchment-200/10 bg-ink-900/30 px-4 py-3.5 hover:border-parchment-200/25 active:border-parchment-200/35 transition-colors touch-manipulation"
+                    className="block min-h-[52px] rounded-sm border border-parchment-200/12 bg-ink-900/35 px-4 py-4 sm:py-3.5 hover:border-parchment-200/28 active:border-parchment-200/40 active:bg-ink-900/50 transition-colors touch-manipulation"
                   >
-                    <p className="text-parchment-100/85 text-sm leading-relaxed italic">
+                    <p className="text-parchment-100/88 text-[0.9375rem] sm:text-sm leading-[1.65] italic text-pretty">
                       {line}
                     </p>
                   </Link>
@@ -57,26 +54,23 @@ export function StorySelectPage() {
       ) : null}
 
       {teasers.length > 0 ? (
-        <section className="mb-8 sm:mb-10" aria-labelledby="browse-teasers">
-          <h2
-            id="browse-teasers"
-            className="text-xs uppercase tracking-[0.28em] text-parchment-200/40 font-sans mb-3 sm:mb-4"
-          >
+        <section className="mb-10 sm:mb-12" aria-labelledby="browse-teasers">
+          <h2 id="browse-teasers" className="browse-section-label">
             On the horizon
           </h2>
-          <ul className="flex flex-col gap-3 sm:gap-4">
+          <ul className="flex flex-col gap-4 sm:gap-5">
             {teasers.map(({ story, browse }) => {
               const p = browse.surfacing.playerFacing;
               return (
                 <li key={story.id}>
                   <Link
                     to={`/stories/${story.id}`}
-                    className="block rounded-sm border border-parchment-200/12 bg-ink-800/40 p-4 sm:p-5 hover:border-parchment-200/30 active:border-parchment-200/40 transition-colors touch-manipulation"
+                    className="block rounded-sm border border-parchment-200/14 bg-ink-800/45 p-4 sm:p-5 hover:border-parchment-200/32 active:border-parchment-200/45 transition-colors touch-manipulation"
                   >
-                    <h3 className="font-serif text-lg sm:text-xl text-parchment-50 mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-parchment-50 mb-2 text-balance">
                       {p.teaserTitle}
                     </h3>
-                    <p className="text-parchment-200/75 text-sm leading-relaxed">
+                    <p className="text-parchment-200/80 text-sm sm:text-base leading-relaxed max-w-prose">
                       {p.teaserSummary}
                     </p>
                   </Link>
@@ -88,15 +82,15 @@ export function StorySelectPage() {
       ) : null}
 
       {mainList.length > 0 && (rumors.length > 0 || teasers.length > 0) ? (
-        <h2
-          id="browse-shelf"
-          className="text-xs uppercase tracking-[0.28em] text-parchment-200/40 font-sans mb-3 sm:mb-4 pt-2 border-t border-parchment-200/10"
-        >
+        <h2 id="browse-shelf" className="browse-section-label pt-4 border-t border-parchment-200/10">
           On the shelf
         </h2>
       ) : null}
 
-      <ul className="flex flex-col gap-4 sm:gap-5" aria-labelledby={mainList.length > 0 && (rumors.length > 0 || teasers.length > 0) ? "browse-shelf" : undefined}>
+      <ul
+        className="flex flex-col gap-5 sm:gap-6"
+        aria-labelledby={mainList.length > 0 && (rumors.length > 0 || teasers.length > 0) ? "browse-shelf" : undefined}
+      >
         {mainList.map(({ story, browse }) => {
           const locked = !browse.unlocked;
           const p = browse.surfacing.playerFacing;
@@ -117,10 +111,10 @@ export function StorySelectPage() {
                   {p.continuationHint}
                 </p>
               ) : null}
-              <h2 className="font-serif text-xl sm:text-2xl text-parchment-50 mb-2">
+              <h2 className="font-serif text-xl sm:text-2xl text-parchment-50 mb-2 text-balance">
                 {p.displayTitle}
               </h2>
-              <p className="text-parchment-100/80 text-sm sm:text-base leading-relaxed mb-3">
+              <p className="text-parchment-100/85 text-sm sm:text-base leading-[1.65] sm:leading-relaxed mb-3 max-w-prose line-clamp-6 sm:line-clamp-none text-pretty">
                 {p.displaySummary}
               </p>
               <p className="text-parchment-200/65 italic text-sm mb-1">
@@ -140,9 +134,9 @@ export function StorySelectPage() {
           );
 
           const cardClass =
-            "rounded-sm border p-4 sm:p-6 transition-colors " +
+            "rounded-sm border p-4 sm:p-6 transition-colors min-h-[44px] " +
             (locked
-              ? "border-parchment-200/10 bg-ink-900/40 opacity-75 cursor-not-allowed"
+              ? "border-parchment-200/10 bg-ink-900/40 opacity-80 cursor-not-allowed"
               : "border-parchment-200/15 bg-ink-800/50 hover:border-parchment-200/40 active:border-parchment-200/50 touch-manipulation");
 
           return (

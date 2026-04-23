@@ -6,9 +6,9 @@ interface Props {
 
 export function SceneCard({ scene }: Props) {
   return (
-    <section className="mb-6 sm:mb-8">
+    <section className="mb-7 sm:mb-8">
       {scene.title && (
-        <h2 className="font-serif italic text-lg sm:text-xl text-parchment-200/70 mb-3 sm:mb-4 break-words">
+        <h2 className="font-serif italic text-lg sm:text-xl text-parchment-200/75 mb-4 sm:mb-4 break-words text-balance">
           {scene.title}
         </h2>
       )}

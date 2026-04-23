@@ -56,7 +56,7 @@ npm run test:watch
 
 Progress is persisted to `localStorage` under the key `pov.profile.v1`.
 
-**Browser support:** The UI is intended to play well in **desktop and mobile browsers** (responsive layout, touch-friendly choices, safe-area padding). A minimal **Web App Manifest** (`public/manifest.webmanifest`) supports “Add to Home Screen” style behavior where the OS allows it; there is **no** offline service worker unless you add one later.
+**Browser support (MVP 0.1):** Target is **desktop and mobile browsers** (readable line length, **44px-class** tap targets on primary actions and choices, safe-area insets on body, `100dvh` where helpful). A minimal **Web App Manifest** (`public/manifest.webmanifest`) plus **`apple-mobile-web-app-*`** meta tags support “Add to Home Screen” where the OS allows it; there is **no** offline service worker unless you add one later.
 
 ---
 

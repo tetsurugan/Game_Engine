@@ -10,7 +10,7 @@ Quick handoff for a fresh ChatGPT thread or Cursor agent. **Not** full design do
 
 - **Current phase:** **MVP 0.1 freeze** — finish/polish/ship per **[`mvp_freeze_checklist.md`](../planning/mvp_freeze_checklist.md)** · Paladin cluster · **Gyre** anchor + Survivor aftermath · **Verge** **`verge_mara_anchor`** · **`rumor_girl`** + **`court_aftermath`**. **No new lanes** until checklist release bar met.
 - **Current date of last update:** 2026-04-21
-- **Updated by:** Cursor agent (MVP freeze checklist + handoff alignment)
+- **Updated by:** Cursor agent (browser + mobile MVP readiness pass)
 
 ---
 
@@ -77,6 +77,7 @@ Next **3** only (**MVP 0.1** — polish/ship, not new lanes per **[`mvp_freeze_c
 
 ## Latest meaningful completed work
 
+- **Browser + mobile MVP readiness** — primary pages + shared components + `index.css` + `index.html` Apple web-app meta; **no** new lanes.
 - **`court_aftermath`** — Rumor Girl record proof; **`requiresAnyFlags`** + **`requiresAnyWorldConsequenceMarks`** OR group; **`missing_any_profile_or`**; **`courtAftermath.test.ts`**.
 - **`relational_verdicts_doctrine.md`** — private judgments (event / access / verdict / tendency); **design** law 9 + registry + branch_scope.
 - **`personality_continuity_doctrine.md`** — player lanes, fixed anchors, relational variants; linked from **design** / **branch_scope** / **registry**.

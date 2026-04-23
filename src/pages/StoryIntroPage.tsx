@@ -14,8 +14,8 @@ export function StoryIntroPage() {
   if (!story) {
     return (
       <main className="page-shell max-w-xl">
-        <p>Unknown story.</p>
-        <Link to="/stories" className="btn mt-4 w-full sm:w-auto">
+        <p className="text-parchment-200/80 leading-relaxed">Unknown story.</p>
+        <Link to="/stories" className="btn mt-6 w-full sm:w-auto touch-manipulation">
           Back
         </Link>
       </main>
@@ -31,10 +31,10 @@ export function StoryIntroPage() {
   if (surfacing.state === "hidden") {
     return (
       <main className="page-shell max-w-3xl">
-        <Link to="/stories" className="back-nav">
+        <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
-        <h1 className="font-serif text-2xl sm:text-3xl text-parchment-50 mt-6 sm:mt-8 mb-3 sm:mb-4">
+        <h1 className="font-serif text-2xl sm:text-3xl text-parchment-50 mt-6 sm:mt-8 mb-3 sm:mb-4 text-balance">
           Not yet
         </h1>
         <p className="text-parchment-200/75 mb-6 text-sm sm:text-base leading-relaxed">
@@ -50,16 +50,16 @@ export function StoryIntroPage() {
   if (surfacing.state === "rumor") {
     return (
       <main className="page-shell max-w-3xl">
-        <Link to="/stories" className="back-nav">
+        <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
         <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/45 font-sans mt-6 sm:mt-8 mb-3 sm:mb-4">
           Rumor
         </p>
-        <p className="font-serif text-xl sm:text-2xl text-parchment-100/90 leading-relaxed italic mb-6 sm:mb-8 max-w-prose text-pretty">
+        <p className="font-serif text-lg sm:text-2xl text-parchment-100/90 leading-[1.65] sm:leading-relaxed italic mb-6 sm:mb-8 max-w-prose text-pretty">
           {p.rumorText ?? "Something travels ahead of the truth."}
         </p>
-        <p className="text-parchment-200/65 text-sm mb-8 leading-relaxed">
+        <p className="text-parchment-200/70 text-sm sm:text-base mb-8 leading-relaxed max-w-prose">
           The full thread is not yours to pull—yet.
         </p>
         <Link to="/stories" className="btn w-full sm:w-auto">
@@ -72,7 +72,7 @@ export function StoryIntroPage() {
   if (surfacing.state === "teaser") {
     return (
       <main className="page-shell max-w-3xl">
-        <Link to="/stories" className="back-nav">
+        <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
         {p.toneHint ? (
@@ -80,10 +80,10 @@ export function StoryIntroPage() {
             {p.toneHint}
           </p>
         ) : null}
-        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 sm:mt-4 mb-3">
+        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 sm:mt-4 mb-3 text-balance">
           {p.teaserTitle}
         </h1>
-        <p className="text-parchment-100/80 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-prose">
+        <p className="text-parchment-100/85 text-base sm:text-lg mb-6 sm:mb-8 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
           {p.teaserSummary}
         </p>
         <p className="text-parchment-200/60 text-sm mb-8 leading-relaxed">
@@ -101,7 +101,7 @@ export function StoryIntroPage() {
       surfacing.state === "listed_secret" || p.secretHint ? "Secret" : null;
     return (
       <main className="page-shell max-w-3xl">
-        <Link to="/stories" className="back-nav">
+        <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
         {secretEyebrow ? (
@@ -119,18 +119,18 @@ export function StoryIntroPage() {
             {p.toneHint}
           </p>
         ) : null}
-        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3">
+        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
           {p.displayTitle}
         </h1>
         {p.continuationHint ? (
-          <p className="text-parchment-200/60 text-sm italic mb-4 leading-relaxed max-w-prose">
+          <p className="text-parchment-200/65 text-sm italic mb-4 leading-relaxed max-w-prose">
             {p.continuationHint}
           </p>
         ) : null}
-        <p className="text-parchment-100/80 text-base sm:text-lg mb-6 leading-relaxed max-w-prose">
+        <p className="text-parchment-100/85 text-base sm:text-lg mb-6 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
           {p.displaySummary}
         </p>
-        <div className="rounded-sm border border-vow-strained/40 bg-ink-800/50 p-4 sm:p-5 mb-8">
+        <div className="rounded-sm border border-vow-strained/40 bg-ink-800/50 p-4 sm:p-5 mb-8 max-w-prose">
           <p className="text-xs uppercase tracking-[0.25em] text-vow-strained font-sans mb-2">
             Locked
           </p>
@@ -159,7 +159,7 @@ export function StoryIntroPage() {
 
   return (
     <main className="page-shell max-w-3xl">
-      <Link to="/stories" className="back-nav">
+      <Link to="/stories" className="back-nav -ml-1 pl-1">
         ← Stories
       </Link>
       {p.secretHint ? (
@@ -172,18 +172,18 @@ export function StoryIntroPage() {
           {p.toneHint}
         </p>
       ) : null}
-      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3">
+      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
         {p.displayTitle}
       </h1>
       {p.continuationHint ? (
-        <p className="text-parchment-200/60 text-sm italic mb-3 leading-relaxed max-w-prose">
+        <p className="text-parchment-200/65 text-sm italic mb-3 leading-relaxed max-w-prose">
           {p.continuationHint}
         </p>
       ) : null}
-      <p className="text-parchment-100/80 text-base sm:text-lg mb-2 leading-relaxed max-w-prose">
+      <p className="text-parchment-100/85 text-base sm:text-lg mb-2 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
         {p.displaySummary}
       </p>
-      <p className="text-parchment-200/60 italic mb-8 sm:mb-10 text-sm sm:text-base">
+      <p className="text-parchment-200/65 italic mb-8 sm:mb-10 text-sm sm:text-base leading-relaxed max-w-prose">
         {p.roleHint}
       </p>
 

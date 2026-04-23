@@ -1,5 +1,13 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-21 — Browser + mobile MVP readiness pass (primary pages, no new lanes)
+
+**Summary:** **UX polish** for **desktop + mobile browser**: **`StorySelectPage`** (section labels, spacing, rumor/teaser/shelf readability, **`line-clamp-6`** on shelf summaries for small viewports), **`StoryIntroPage`**, **`StoryPlayPage`** (grid gap, bottom padding), **`ProfilePage`** (section dividers, cards, erase control). Components: **`PlayNarrationBanner`**, **`ChoiceList`**, **`SceneCard`**, **`StoryHeader`**, **`EndingScreen`**, **`PersonalitySelector`**, **`VowPanel`**. **`index.css`**: safe-area **top** on `body`, **`prose-story`** / **`choice-btn`** / **`browse-section-label`**, **`page-shell`** bottom inset. **`index.html`**: **`apple-mobile-web-app-*`**. **`README`** browser note. Docs: **`latest_report`**, **`agent_handoff`**, **`CHATGPT_CODEBASE_BRIEFING`**. **MVP freeze:** no content lanes or engine features.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
 ## 2026-04-21 — MVP 0.1 hard freeze checklist (`mvp_freeze_checklist.md`)
 
 **Summary:** New **[`docs/planning/mvp_freeze_checklist.md`](../planning/mvp_freeze_checklist.md)** — repo control doc: **§1** what ships in 0.1 (Paladin mainline + proof cluster, Gyre anchor + Survivor aftermath, Verge anchor, Rumor Girl, court_aftermath, core systems, mobile/browser baseline, build/test/lint/validator, docs framing); **§2** explicit **post-0.1 freeze** (Replacement, extra Gyre aftermaths, prequel implementation, Verge tree, new Paladin/anchors, observer, full handlers, major engine, etc.); **§3** quality gates (content, shelf, stability, mobile, release framing); **§4** scope guardrails; **§5** MVP-ready rule. Light updates: **`agent_handoff.md`**, **`backlog.md`**, **`story_registry.md`** (freeze link), **`CHATGPT_CODEBASE_BRIEFING.md`**, **`latest_report.md`**.

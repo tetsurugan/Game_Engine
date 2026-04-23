@@ -12,8 +12,8 @@ export function PersonalitySelector({ personalities, onConfirm }: Props) {
   );
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
+    <div className="flex flex-col gap-8">
+      <div className="grid gap-4 sm:gap-4 md:grid-cols-2">
         {personalities.map((p) => {
           const active = p.id === selected;
           return (
@@ -21,7 +21,7 @@ export function PersonalitySelector({ personalities, onConfirm }: Props) {
               type="button"
               key={p.id}
               onClick={() => setSelected(p.id)}
-              className={`min-h-[5.5rem] text-left rounded-sm border p-4 sm:p-5 transition-colors duration-150 touch-manipulation ${
+              className={`min-h-[5.75rem] text-left rounded-sm border p-4 sm:p-5 transition-colors duration-150 touch-manipulation ${
                 active
                   ? "border-vow-kept/70 bg-ink-700/70"
                   : "border-parchment-200/15 bg-ink-800/50 hover:border-parchment-200/40 active:border-parchment-200/50"

@@ -43,8 +43,8 @@ export function StoryPlayPage() {
 
   if (!currentStory || !runtime) {
     return (
-      <main className="page-shell max-w-xl min-h-[40vh]">
-        <p className="text-parchment-200/80">Loading…</p>
+      <main className="page-shell max-w-xl min-h-[40vh] flex flex-col justify-center">
+        <p className="text-parchment-200/80 text-base">Loading…</p>
       </main>
     );
   }
@@ -77,15 +77,15 @@ export function StoryPlayPage() {
   }
 
   return (
-    <main className="page-shell max-w-5xl min-h-[100dvh] min-h-screen">
+    <main className="page-shell max-w-5xl min-h-[100dvh] min-h-screen pb-12">
       <StoryHeader story={currentStory} />
-      <div className="grid gap-6 md:gap-8 md:grid-cols-[minmax(0,1fr)_min(280px,32%)]">
+      <div className="grid grid-cols-1 gap-10 md:gap-8 md:grid-cols-[minmax(0,1fr)_min(280px,32%)]">
         <div className="min-w-0 order-1">
           <PlayNarrationBanner frame={playNarrationFrame} />
           <SceneCard scene={scene} />
           <ChoiceList choices={visibleChoices} onSelect={selectChoice} />
         </div>
-        <div className="flex flex-col gap-4 order-2 md:sticky md:top-6 md:self-start">
+        <div className="flex flex-col gap-5 order-2 md:sticky md:top-6 md:self-start">
           <VowPanel story={currentStory} vowStates={runtime.vowStates} />
           <StatPanel story={currentStory} variables={runtime.variables} />
         </div>

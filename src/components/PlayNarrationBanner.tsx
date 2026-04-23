@@ -12,7 +12,7 @@ export function PlayNarrationBanner({ frame }: Props) {
 
   return (
     <aside
-      className="mb-4 sm:mb-6 rounded-lg border border-amber-900/35 bg-stone-950/55 px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-parchment-200/90 shadow-inner max-w-prose"
+      className="mb-5 sm:mb-6 rounded-md border border-amber-900/25 border-l-4 border-l-amber-700/35 bg-stone-950/50 px-3 py-3 sm:px-4 sm:py-3.5 text-sm text-parchment-200/90 shadow-sm max-w-[36rem] w-full"
       aria-label="Story narration"
     >
       {frame.postChoice && (

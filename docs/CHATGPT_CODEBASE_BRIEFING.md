@@ -35,7 +35,7 @@ This document summarizes what the repository **currently does**, how major piece
 
 **Scripts:** `npm run dev`, `build` (tsc + vite), `lint` (eslint), **`test`** / **`test:watch`** (Vitest, `src/engine/__tests__/**/*.test.ts`).
 
-**Browser / mobile:** The app is a **single web codebase** tuned for **desktop and mobile browsers** — readable line lengths (`max-w-prose`), **44px-class** tap targets on primary actions and choices, **safe-area** insets, `100dvh` where helpful. **Light PWA:** `public/manifest.webmanifest` + `theme-color` + `viewport-fit=cover` — **no** service worker or offline guarantee unless added later.
+**Browser / mobile (MVP 0.1 polish):** Single web codebase for **desktop and mobile browsers** — `src/index.css` **`page-shell`** / **`prose-story`** / **`choice-btn`** (taller min-height on small screens, relaxed line-height), **`browse-section-label`** for shelf hierarchy; **safe-area** on `body` (top + horizontal) and bottom padding on **`page-shell`**; primary pages tuned: **`StorySelectPage`** (rumor/teaser/shelf spacing, optional **`line-clamp-6`** on shelf summaries for small screens), **`StoryIntroPage`**, **`StoryPlayPage`** (column gap, bottom padding), **`ProfilePage`**. **`index.html`:** `apple-mobile-web-app-capable`, `apple-mobile-web-app-status-bar-style`. **Light PWA:** `public/manifest.webmanifest` + `theme-color` + `viewport-fit=cover` — **no** service worker unless added later.
 
 ---
 

@@ -15,7 +15,7 @@ export function ChoiceList({ choices, onSelect }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-3 sm:gap-4 mt-2">
+    <div className="flex flex-col gap-3.5 sm:gap-4 mt-4 sm:mt-2">
       {choices.map(({ choice, available, displayText, displayAnnotation }) => (
         <button
           key={choice.id}
