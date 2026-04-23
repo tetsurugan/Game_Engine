@@ -1,10 +1,10 @@
 # Backlog — prioritized tasks
 
-**Doctrine:** [`design_doctrine.md`](design_doctrine.md), **[`branch_scope_doctrine.md`](branch_scope_doctrine.md)** (sequel eligibility & branch budgets). **World taxonomy:** [`eras_and_scales.md`](eras_and_scales.md), [`story_registry.md`](story_registry.md), [`module_templates.md`](module_templates.md).
+**Doctrine:** [`design_doctrine.md`](design_doctrine.md), **[`branch_scope_doctrine.md`](branch_scope_doctrine.md)** (sequel eligibility & branch budgets). **MVP 0.1 boundary (freeze):** **[`mvp_freeze_checklist.md`](mvp_freeze_checklist.md)** — **in/out scope, quality gates, scope guardrails**; use before adding lanes or shipped rows. **World taxonomy:** [`eras_and_scales.md`](eras_and_scales.md), [`story_registry.md`](story_registry.md), [`module_templates.md`](module_templates.md).
 
 Statuses: **todo** | **in progress** | **done** | **blocked**
 
-Top priorities stay **engine-first**: unlock evaluation, belief/truth split, remaining **story-class handlers**, then content waves.
+**Until MVP 0.1 ships:** default priorities = **finish, polish, and stabilize** the frozen content set (see checklist §1), not **new anchor lanes**. Longer backlog rows below include **post-0.1** work — treat **`mvp_freeze_checklist.md` §2** as authoritative for freeze.
 
 ---
 
@@ -74,6 +74,7 @@ Top priorities stay **engine-first**: unlock evaluation, belief/truth split, rem
 
 ## Maintenance
 
+- **MVP 0.1:** Before pulling new work from this backlog, run **[`mvp_freeze_checklist.md`](mvp_freeze_checklist.md) §4** (scope guardrails).
 - **P0** stays **small**; split tasks if any row becomes a mega-project.
 - **Blocked** items need “blocked by: …”.
 - Tasks must **not** add player-visible **`storyClass`** labels—see doctrine.

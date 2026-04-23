@@ -1,5 +1,13 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-21 — MVP 0.1 hard freeze checklist (`mvp_freeze_checklist.md`)
+
+**Summary:** New **[`docs/planning/mvp_freeze_checklist.md`](../planning/mvp_freeze_checklist.md)** — repo control doc: **§1** what ships in 0.1 (Paladin mainline + proof cluster, Gyre anchor + Survivor aftermath, Verge anchor, Rumor Girl, court_aftermath, core systems, mobile/browser baseline, build/test/lint/validator, docs framing); **§2** explicit **post-0.1 freeze** (Replacement, extra Gyre aftermaths, prequel implementation, Verge tree, new Paladin/anchors, observer, full handlers, major engine, etc.); **§3** quality gates (content, shelf, stability, mobile, release framing); **§4** scope guardrails; **§5** MVP-ready rule. Light updates: **`agent_handoff.md`**, **`backlog.md`**, **`story_registry.md`** (freeze link), **`CHATGPT_CODEBASE_BRIEFING.md`**, **`latest_report.md`**.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
 ## 2026-04-21 — `court_aftermath` proof pass: two scenes, fatal OR gate, profile marks in snapshot
 
 **Summary:** Expanded **`court_aftermath`** — **two** short scenes (`court_aftermath_read` → `court_aftermath_hallway`); copy sharpens **relational verdicts** (multiple incompatible private readings + **action tendency**); gates now **`requiresAnyWorldConsequenceMarks`:** `rumor_girl_fatal_aftermath_seeded` in the **same OR group** as witness / belief-gap flags (`missing_any_profile_or` replaces `missing_any_world_flag`). **`RuntimeProfileSnapshot.worldConsequenceMarks`** + **`toRuntimeProfileSnapshot`**; **`profile.worldConsequenceMarks`** in **`resolveTarget`** for ending conditions. Third closing **`court_aftermath_close_fatal_mark`** (priority 19) for fatal mark without witness flag, mutex **not** `belief_gap_soft`. Tests: mixed-death startable, fatal-only OR gate, fatal closing, gate OR marks. Docs: registry, **`world_echoes.md`**, briefing, **`latest_report.md`**, **`agent_handoff.md`**.
