@@ -130,7 +130,7 @@ export interface BeliefRuntimeState {
  *   profile.globalEchoes        — durable echo ids array
  *   profile.completedEndings.<storyId> — ending ids completed for that story
  *   profile.unlockedModuleIds   — module ids from prior ending `unlocks`
- *   (future) profile.worldlineBranches / marks — see `worldConsequences.ts`
+ *   profile.worldConsequenceMarks — deduped mark ids (requires snapshot array)
  */
 export interface Condition {
   target: string;
@@ -504,6 +504,13 @@ export interface StoryDefinition {
    * exclusive seeds that open the same follow-up (e.g. shock vs soft aftermath).
    */
   requiresAnyFlags?: string[];
+  /**
+   * At least one mark must appear on `profile.worldConsequenceMarks` (OR).
+   * Evaluated together with `requiresAnyFlags` as a single OR group: pass if
+   * any listed flag is true **or** any listed mark is present (when either
+   * array is non-empty).
+   */
+  requiresAnyWorldConsequenceMarks?: string[];
   /** If any id is true on `profile.worldFlags`, the story is mutex-blocked. */
   excludesFlags?: string[];
   /** Player must have completed these endings (any order). */
@@ -615,6 +622,8 @@ export interface RuntimeProfileSnapshot {
   globalEchoes: FlagId[];
   completedEndings: Record<string, EndingId[]>;
   unlockedModuleIds: string[];
+  /** Consequence marks (e.g. ending-gated conditions via `includes`). */
+  worldConsequenceMarks: string[];
 }
 
 /**

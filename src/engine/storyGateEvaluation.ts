@@ -17,6 +17,7 @@ export type StoryGateMetadata = Pick<
   | "excludesEchoes"
   | "requiresFlags"
   | "requiresAnyFlags"
+  | "requiresAnyWorldConsequenceMarks"
   | "excludesFlags"
   | "requiresEndings"
   | "requiresUnlockedModuleIds"
@@ -51,7 +52,11 @@ export type StoryGateBlockedReason =
   | StoryGateMutexReason
   | { code: "missing_echo"; echoId: FlagId }
   | { code: "missing_world_flag"; flagId: string }
-  | { code: "missing_any_world_flag"; flagIds: string[] }
+  | {
+      code: "missing_any_profile_or";
+      flagIds: string[];
+      markIds: string[];
+    }
   | { code: "missing_ending"; storyId: string; endingId: EndingId }
   | { code: "missing_unlocked_module"; moduleId: string }
   | { code: "locked_until_echo"; echoId: FlagId }
@@ -200,13 +205,17 @@ function computeGateSnapshot(
     }
   }
 
-  const anyFlags = story.requiresAnyFlags ?? [];
-  if (anyFlags.length > 0) {
-    const anyPass = anyFlags.some((fid) => flags[fid]);
-    if (!anyPass) {
+  const orFlags = story.requiresAnyFlags ?? [];
+  const orMarks = story.requiresAnyWorldConsequenceMarks ?? [];
+  if (orFlags.length > 0 || orMarks.length > 0) {
+    const hit =
+      orFlags.some((fid) => flags[fid]) ||
+      orMarks.some((mid) => consequenceMarks.includes(mid));
+    if (!hit) {
       discoveryBlocked.push({
-        code: "missing_any_world_flag",
-        flagIds: [...anyFlags],
+        code: "missing_any_profile_or",
+        flagIds: [...orFlags],
+        markIds: [...orMarks],
       });
     }
   }

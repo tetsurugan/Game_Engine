@@ -312,6 +312,7 @@ export const storyDefinitionSchema = z.object({
   excludesEchoes: z.array(z.string()).optional(),
   requiresFlags: z.array(z.string()).optional(),
   requiresAnyFlags: z.array(z.string()).optional(),
+  requiresAnyWorldConsequenceMarks: z.array(z.string().min(1)).optional(),
   excludesFlags: z.array(z.string()).optional(),
   requiresEndings: z.array(storyEndingRequirementSchema).optional(),
   requiresUnlockedModuleIds: z.array(z.string()).optional(),

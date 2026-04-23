@@ -10,7 +10,7 @@ Quick handoff for a fresh ChatGPT thread or Cursor agent. **Not** full design do
 
 - **Current phase:** Paladin **closed** · **Gyre** anchor + Survivor witness · **Verge** **`verge_mara_anchor`** · **Modern** **`rumor_girl`** + **`court_aftermath`** record proof. Gyre **Replacement** still **unopened**.
 - **Current date of last update:** 2026-04-21
-- **Updated by:** Cursor agent (`court_aftermath` + `requiresAnyFlags`)
+- **Updated by:** Cursor agent (`court_aftermath` proof pass: two scenes, OR marks, snapshot marks)
 
 ---
 
@@ -77,7 +77,7 @@ Next **3** only:
 
 ## Latest meaningful completed work
 
-- **`court_aftermath`** — Rumor Girl record proof; **`requiresAnyFlags`** gate; **`courtAftermath.test.ts`**.
+- **`court_aftermath`** — Rumor Girl record proof; **`requiresAnyFlags`** + **`requiresAnyWorldConsequenceMarks`** OR group; **`missing_any_profile_or`**; **`courtAftermath.test.ts`**.
 - **`relational_verdicts_doctrine.md`** — private judgments (event / access / verdict / tendency); **design** law 9 + registry + branch_scope.
 - **`personality_continuity_doctrine.md`** — player lanes, fixed anchors, relational variants; linked from **design** / **branch_scope** / **registry**.
 - **Browser + mobile readiness** — `page-shell` / safe-area / touch targets; Profile **world flags** + **marks** when present; **`manifest.webmanifest`**.
@@ -115,7 +115,7 @@ Next **3** only:
 
 ## Paste recipes (Cursor / ChatGPT)
 
-**Ultra-short status:** Paladin ✓ · Gyre ✓ · Verge ✓ · **`rumor_girl`** ✓ · next = court/witness consumer or Verge aftershock, one slice.
+**Ultra-short status:** Paladin ✓ · Gyre ✓ · Verge ✓ · **`rumor_girl`** ✓ · **`court_aftermath`** ✓ · next = Verge aftershock or scoped Rumor prequel, one slice.
 
 **Read order:** briefing → **`latest_report`** → **`rumor_girl/story.ts`** → [`rumor_girl_future_locked_prequel.md`](../planning/story_concepts/rumor_girl_future_locked_prequel.md) (concept) → registry.
 

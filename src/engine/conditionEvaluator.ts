@@ -38,6 +38,9 @@ export function resolveTarget(
     if (bucket === "unlockedModuleIds" && parts.length === 2) {
       return profileSnapshot.unlockedModuleIds;
     }
+    if (bucket === "worldConsequenceMarks" && parts.length === 2) {
+      return profileSnapshot.worldConsequenceMarks;
+    }
     return undefined;
   }
 

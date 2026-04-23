@@ -84,7 +84,7 @@ All echoes are stored the same way in the profile; **level** is **design vocabul
 
 **Mark:** `rumor_girl_court_aftermath_touched` — this proof module resolved.
 
-**Gate:** mark **`rumor_girl_proof_resolved`** + **`requiresAnyFlags`**: `rumor_girl_witness_aftermath_invited` **or** `rumor_girl_belief_gap_soft` (engine OR). Rumor strip before discovery.
+**Gate:** mark **`rumor_girl_proof_resolved`** + unified OR (**`requiresAnyFlags`** ∪ **`requiresAnyWorldConsequenceMarks`**): `rumor_girl_witness_aftermath_invited` **or** `rumor_girl_belief_gap_soft` **or** mark `rumor_girl_fatal_aftermath_seeded`. Block reason: **`missing_any_profile_or`**. Rumor strip before discovery.
 
 **Module:** [`court_aftermath`](../../src/stories/court_aftermath/story.ts) — **`continuationOf`** **`rumor_girl`**; variant group **`rumor_girl_court_aftermath`** / **`friend_record`**.
 

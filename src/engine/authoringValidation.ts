@@ -64,6 +64,7 @@ function gateFingerprint(story: StoryDefinition): string {
       .sort(),
     flags: [...(story.requiresFlags ?? [])].sort(),
     anyFlags: [...(story.requiresAnyFlags ?? [])].sort(),
+    anyMarks: [...(story.requiresAnyWorldConsequenceMarks ?? [])].sort(),
     mods: [...(story.requiresUnlockedModuleIds ?? [])].sort(),
     wl: story.requiresWorldlineBranch
       ? `${story.requiresWorldlineBranch.groupId}:${story.requiresWorldlineBranch.branchId}`
@@ -326,6 +327,7 @@ function validateSurfacingHeuristics(
       (s.requiresEndings?.length ?? 0) > 0 ||
       (s.requiresFlags?.length ?? 0) > 0 ||
       (s.requiresAnyFlags?.length ?? 0) > 0 ||
+      (s.requiresAnyWorldConsequenceMarks?.length ?? 0) > 0 ||
       (s.requiresUnlockedModuleIds?.length ?? 0) > 0 ||
       (s.requiresWorldlineBranch !== undefined) ||
       (s.requiresWorldConsequenceMarks?.length ?? 0) > 0;

@@ -19,5 +19,6 @@ export function toRuntimeProfileSnapshot(
       ]),
     ),
     unlockedModuleIds: [...(profile.unlockedModuleIds ?? [])],
+    worldConsequenceMarks: [...(profile.worldConsequenceMarks ?? [])],
   };
 }

@@ -137,9 +137,10 @@ describe("evaluateStorySurfacing", () => {
     expect(
       r.blockedReasons.some(
         (b) =>
-          b.code === "missing_any_world_flag" &&
+          b.code === "missing_any_profile_or" &&
           b.flagIds.includes("path_a") &&
-          b.flagIds.includes("path_b"),
+          b.flagIds.includes("path_b") &&
+          b.markIds.length === 0,
       ),
     ).toBe(true);
   });
@@ -149,10 +150,21 @@ describe("evaluateStorySurfacing", () => {
     const profile = emptyProfile();
     profile.worldFlags = { path_b: true };
     const r = evaluateStorySurfacing(story, profile);
-    expect(r.blockedReasons.some((b) => b.code === "missing_any_world_flag")).toBe(
-      false,
-    );
+    expect(
+      r.blockedReasons.some((b) => b.code === "missing_any_profile_or"),
+    ).toBe(false);
     expect(r.state).toBe("startable");
+  });
+
+  it("allows discovery when requiresAnyWorldConsequenceMarks satisfies OR group", () => {
+    const story = minimalStory({
+      requiresAnyFlags: ["path_a"],
+      requiresAnyWorldConsequenceMarks: ["seed_x"],
+    });
+    const profile = emptyProfile();
+    profile.worldConsequenceMarks = ["seed_x"];
+    const r = evaluateStorySurfacing(story, profile);
+    expect(r.isStartable).toBe(true);
   });
 
   it("blocks discovery for missing requiresEndings", () => {

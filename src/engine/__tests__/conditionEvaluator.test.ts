@@ -12,6 +12,7 @@ const snapshot: RuntimeProfileSnapshot = {
   globalEchoes: ["ge1"],
   completedEndings: { story_a: ["end_x"] },
   unlockedModuleIds: ["mod1"],
+  worldConsequenceMarks: ["mark_a"],
 };
 
 describe("resolveTarget & evaluateCondition", () => {
@@ -85,6 +86,9 @@ describe("resolveTarget & evaluateCondition", () => {
       resolveTarget(state, "profile.unlockedModuleIds", snapshot),
     ).toEqual(["mod1"]);
     expect(
+      resolveTarget(state, "profile.worldConsequenceMarks", snapshot),
+    ).toEqual(["mark_a"]);
+    expect(
       evaluateCondition(
         state,
         {
@@ -113,6 +117,32 @@ describe("resolveTarget & evaluateCondition", () => {
         operator: "eq",
         value: true,
       }),
+    ).toBe(false);
+  });
+
+  it("supports includes on profile.worldConsequenceMarks", () => {
+    const state = minimalRuntime();
+    expect(
+      evaluateCondition(
+        state,
+        {
+          target: "profile.worldConsequenceMarks",
+          operator: "includes",
+          value: "mark_a",
+        },
+        snapshot,
+      ),
+    ).toBe(true);
+    expect(
+      evaluateCondition(
+        state,
+        {
+          target: "profile.worldConsequenceMarks",
+          operator: "includes",
+          value: "missing_mark",
+        },
+        snapshot,
+      ),
     ).toBe(false);
   });
 

@@ -1,5 +1,13 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-21 — `court_aftermath` proof pass: two scenes, fatal OR gate, profile marks in snapshot
+
+**Summary:** Expanded **`court_aftermath`** — **two** short scenes (`court_aftermath_read` → `court_aftermath_hallway`); copy sharpens **relational verdicts** (multiple incompatible private readings + **action tendency**); gates now **`requiresAnyWorldConsequenceMarks`:** `rumor_girl_fatal_aftermath_seeded` in the **same OR group** as witness / belief-gap flags (`missing_any_profile_or` replaces `missing_any_world_flag`). **`RuntimeProfileSnapshot.worldConsequenceMarks`** + **`toRuntimeProfileSnapshot`**; **`profile.worldConsequenceMarks`** in **`resolveTarget`** for ending conditions. Third closing **`court_aftermath_close_fatal_mark`** (priority 19) for fatal mark without witness flag, mutex **not** `belief_gap_soft`. Tests: mixed-death startable, fatal-only OR gate, fatal closing, gate OR marks. Docs: registry, **`world_echoes.md`**, briefing, **`latest_report.md`**, **`agent_handoff.md`**.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
 ## 2026-04-21 — `court_aftermath` Rumor Girl record proof + `requiresAnyFlags`
 
 **Summary:** Shipped **`court_aftermath`** (*The Morning After Verdict*): **witness**-class **friend POV** after **`rumor_girl`**; gates **`rumor_girl_proof_resolved`** + **OR** `rumor_girl_witness_aftermath_invited` \| `rumor_girl_belief_gap_soft` via new **`requiresAnyFlags`** (`storyGateEvaluation`, types, Zod, authoring guard); rumor surfacing; **two** closings (shock vs soft seed); echo **`rumor_girl_court_aftermath_logged`**, mark **`rumor_girl_court_aftermath_touched`**. Tests **`courtAftermath.test.ts`**, gate tests. **`story_registry.md`**, **`world_echoes.md`**, **`backlog.md`**, **`agent_handoff.md`**, briefing, **`latest_report.md`**.

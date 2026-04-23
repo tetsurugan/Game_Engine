@@ -80,6 +80,7 @@ export function profileSnapshot(
     globalEchoes: [],
     completedEndings: {},
     unlockedModuleIds: [],
+    worldConsequenceMarks: [],
     ...overrides,
   };
 }
