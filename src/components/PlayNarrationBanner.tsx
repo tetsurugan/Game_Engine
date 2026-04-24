@@ -1,7 +1,39 @@
-import type { ResolvedPlayNarration } from "../engine/types";
+import type {
+  PlayNarrationArrivalKind,
+  PressuredResolutionKind,
+  ResolvedPlayNarration,
+} from "../engine/types";
 
 interface Props {
   frame: ResolvedPlayNarration | null;
+}
+
+function postChoiceEyebrow(kind?: PressuredResolutionKind): string {
+  switch (kind) {
+    case "forced":
+      return "Carried forward";
+    case "mutated":
+      return "Something shifts";
+    case "strained":
+      return "Weight on the line";
+    case "normal":
+      return "After the beat";
+    default:
+      return "After the beat";
+  }
+}
+
+function arrivalEyebrow(kind: PlayNarrationArrivalKind): string {
+  switch (kind) {
+    case "forced":
+      return "Brought here";
+    case "mutated":
+      return "Arrival, altered";
+    case "free":
+      return "You arrive";
+    default:
+      return "You arrive";
+  }
 }
 
 /**
@@ -12,20 +44,18 @@ export function PlayNarrationBanner({ frame }: Props) {
 
   return (
     <aside
-      className="mb-5 sm:mb-6 rounded-md border border-amber-900/25 border-l-4 border-l-amber-700/35 bg-stone-950/50 px-3 py-3 sm:px-4 sm:py-3.5 text-sm text-parchment-200/90 shadow-sm max-w-[36rem] w-full"
-      aria-label="Story narration"
+      className="mb-4 sm:mb-5 rounded-md border border-amber-900/20 border-l-[3px] border-l-amber-700/30 bg-stone-950/35 px-3 py-2.5 sm:px-4 sm:py-3 text-parchment-200/90 shadow-sm max-w-[36rem] w-full min-w-0"
+      aria-label="Narration aside"
     >
       {frame.postChoice && (
-        <div className={frame.sceneArrival ? "mb-3 sm:mb-4" : ""}>
-          <p className="mb-1 text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wider sm:tracking-widest text-amber-200/45">
-            {frame.postChoice.resolutionKind
-              ? `After choice — ${frame.postChoice.resolutionKind}`
-              : "After choice"}
+        <div className={frame.sceneArrival ? "mb-2.5 sm:mb-3.5" : ""}>
+          <p className="mb-1 text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wide sm:tracking-wider text-amber-200/40 leading-tight">
+            {postChoiceEyebrow(frame.postChoice.resolutionKind)}
           </p>
           {frame.postChoice.lines.map((line, i) => (
             <p
               key={`p-${i}`}
-              className="font-serif italic text-sm sm:text-base leading-relaxed text-parchment-100/88 text-pretty"
+              className="font-serif italic text-[0.8125rem] sm:text-base leading-[1.55] sm:leading-relaxed text-parchment-100/85 text-pretty break-words"
             >
               {line}
             </p>
@@ -34,13 +64,13 @@ export function PlayNarrationBanner({ frame }: Props) {
       )}
       {frame.sceneArrival && (
         <div>
-          <p className="mb-1 text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wider sm:tracking-widest text-amber-200/45">
-            Arrival — {frame.sceneArrival.kind}
+          <p className="mb-1 text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wide sm:tracking-wider text-amber-200/40 leading-tight">
+            {arrivalEyebrow(frame.sceneArrival.kind)}
           </p>
           {frame.sceneArrival.lines.map((line, i) => (
             <p
               key={`a-${i}`}
-              className="font-serif italic text-sm sm:text-base leading-relaxed text-parchment-100/88 text-pretty"
+              className="font-serif italic text-[0.8125rem] sm:text-base leading-[1.55] sm:leading-relaxed text-parchment-100/85 text-pretty break-words"
             >
               {line}
             </p>

@@ -2,21 +2,27 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { getStoryBrowseState } from "../engine/storyPresentation";
 import { getStoryById, storyRegistry } from "../stories";
 import { PersonalitySelector } from "../components/PersonalitySelector";
+import {
+  selectProfile,
+  selectStartStory,
+} from "../store/storyStoreSelectors";
 import { useStoryStore } from "../store/useStoryStore";
 
 export function StoryIntroPage() {
   const { storyId = "" } = useParams();
   const navigate = useNavigate();
-  const startStory = useStoryStore((s) => s.startStory);
-  const profile = useStoryStore((s) => s.profile);
+  const startStory = useStoryStore(selectStartStory);
+  const profile = useStoryStore(selectProfile);
 
   const story = getStoryById(storyId);
   if (!story) {
     return (
       <main className="page-shell max-w-xl">
-        <p className="text-parchment-200/80 leading-relaxed">Unknown story.</p>
+        <p className="text-parchment-200/80 leading-relaxed">
+          That title isn't in this anthology.
+        </p>
         <Link to="/stories" className="btn mt-6 w-full sm:w-auto touch-manipulation">
-          Back
+          Back to stories
         </Link>
       </main>
     );
@@ -34,15 +40,19 @@ export function StoryIntroPage() {
         <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
-        <h1 className="font-serif text-2xl sm:text-3xl text-parchment-50 mt-6 sm:mt-8 mb-3 sm:mb-4 text-balance">
+        <p className="intro-state-eyebrow intro-state-eyebrow--hidden">Not on your shelf</p>
+        <h1 className="font-serif text-2xl sm:text-3xl text-parchment-50 mt-2 sm:mt-3 mb-3 sm:mb-4 text-balance">
           Not yet
         </h1>
-        <p className="text-parchment-200/75 mb-6 text-sm sm:text-base leading-relaxed">
-          This tale has not surfaced in your anthology yet.
+        <p className="text-parchment-200/75 mb-6 text-sm sm:text-base leading-relaxed max-w-prose">
+          Nothing is wrong—it hasn't reached you yet. Another choice or another
+          ending may call it forward; the shelf will tell you when.
         </p>
-        <Link to="/stories" className="btn w-full sm:w-auto">
-          Return to stories
-        </Link>
+        <div className="intro-cta-stack">
+          <Link to="/stories" className="btn w-full sm:w-auto touch-manipulation">
+            Return to stories
+          </Link>
+        </div>
       </main>
     );
   }
@@ -53,18 +63,19 @@ export function StoryIntroPage() {
         <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
-        <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/45 font-sans mt-6 sm:mt-8 mb-3 sm:mb-4">
-          Rumor
-        </p>
-        <p className="font-serif text-lg sm:text-2xl text-parchment-100/90 leading-[1.65] sm:leading-relaxed italic mb-6 sm:mb-8 max-w-prose text-pretty">
-          {p.rumorText ?? "Something travels ahead of the truth."}
+        <p className="intro-state-eyebrow intro-state-eyebrow--whisper">Rumor</p>
+        <p className="font-serif text-lg sm:text-2xl text-parchment-100/90 leading-[1.65] sm:leading-relaxed italic mb-5 sm:mb-6 max-w-prose text-pretty">
+          {p.rumorText ?? "Something moves ahead of the truth—too thin to grasp."}
         </p>
         <p className="text-parchment-200/70 text-sm sm:text-base mb-8 leading-relaxed max-w-prose">
-          The full thread is not yours to pull—yet.
+          Carry it back to the shelf or leave it here. You can't enter the thread
+          yet—that's the shape of things, not a slight.
         </p>
-        <Link to="/stories" className="btn w-full sm:w-auto">
-          Back to stories
-        </Link>
+        <div className="intro-cta-stack">
+          <Link to="/stories" className="btn w-full sm:w-auto touch-manipulation">
+            Back to stories
+          </Link>
+        </div>
       </main>
     );
   }
@@ -75,72 +86,76 @@ export function StoryIntroPage() {
         <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
+        <p className="intro-state-eyebrow intro-state-eyebrow--horizon">On the horizon</p>
         {p.toneHint ? (
-          <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mt-6 sm:mt-8">
+          <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.26em] text-parchment-200/50 font-sans mt-2 mb-1">
             {p.toneHint}
           </p>
         ) : null}
-        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-3 sm:mt-4 mb-3 text-balance">
+        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
           {p.teaserTitle}
         </h1>
-        <p className="text-parchment-100/85 text-base sm:text-lg mb-6 sm:mb-8 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
+        <p className="text-parchment-100/85 text-base sm:text-lg mb-6 sm:mb-7 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
           {p.teaserSummary}
         </p>
-        <p className="text-parchment-200/60 text-sm mb-8 leading-relaxed">
-          This path is still forming. Return when your anthology opens it.
+        <p className="text-parchment-200/60 text-sm mb-8 leading-relaxed max-w-prose">
+          It's real enough to name, not yet real enough to step into. When the
+          shelf grants it, it leaves the horizon—until then, let it stay a shape.
         </p>
-        <Link to="/stories" className="btn w-full sm:w-auto">
-          Back to stories
-        </Link>
+        <div className="intro-cta-stack">
+          <Link to="/stories" className="btn w-full sm:w-auto touch-manipulation">
+            Back to stories
+          </Link>
+        </div>
       </main>
     );
   }
 
   if (!browse.unlocked) {
-    const secretEyebrow =
-      surfacing.state === "listed_secret" || p.secretHint ? "Secret" : null;
+    const isSecret = surfacing.state === "listed_secret";
     return (
       <main className="page-shell max-w-3xl">
         <Link to="/stories" className="back-nav -ml-1 pl-1">
           ← Stories
         </Link>
-        {secretEyebrow ? (
-          <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/45 font-sans mt-4 sm:mt-6">
-            {secretEyebrow}
-          </p>
-        ) : null}
+        <p
+          className={`intro-state-eyebrow ${isSecret ? "intro-state-eyebrow--secret" : "intro-state-eyebrow--held"}`}
+        >
+          {isSecret ? "Secret · waiting" : "Waiting"}
+        </p>
         {p.secretHint ? (
-          <p className="text-parchment-200/70 italic text-sm mt-3 mb-1 leading-relaxed">
+          <p className="text-parchment-200/70 italic text-sm mt-3 mb-1 leading-relaxed max-w-prose">
             {p.secretHint}
           </p>
         ) : null}
         {p.toneHint ? (
-          <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mt-4 sm:mt-6">
+          <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.26em] text-parchment-200/50 font-sans mt-4 sm:mt-5">
             {p.toneHint}
           </p>
         ) : null}
-        <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
+        <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
           {p.displayTitle}
         </h1>
         {p.continuationHint ? (
-          <p className="text-parchment-200/65 text-sm italic mb-4 leading-relaxed max-w-prose">
-            {p.continuationHint}
-          </p>
+          <p className="intro-continuation-hint mb-4">{p.continuationHint}</p>
         ) : null}
         <p className="text-parchment-100/85 text-base sm:text-lg mb-6 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
           {p.displaySummary}
         </p>
         <div className="rounded-sm border border-vow-strained/40 bg-ink-800/50 p-4 sm:p-5 mb-8 max-w-prose">
-          <p className="text-xs uppercase tracking-[0.25em] text-vow-strained font-sans mb-2">
-            Locked
+          <p className="text-[0.65rem] uppercase tracking-[0.22em] text-vow-strained font-sans mb-2">
+            What it's waiting on
           </p>
           <p className="text-parchment-100/85 text-sm sm:text-base leading-relaxed">
-            {p.unlockHint ?? "Another path must open before you can begin this one."}
+            {p.unlockHint ??
+              "Another story's choice has to land before this threshold clears."}
           </p>
         </div>
-        <Link to="/stories" className="btn w-full sm:w-auto">
-          Back to stories
-        </Link>
+        <div className="intro-cta-stack">
+          <Link to="/stories" className="btn w-full sm:w-auto touch-manipulation">
+            Back to stories
+          </Link>
+        </div>
       </main>
     );
   }
@@ -162,35 +177,34 @@ export function StoryIntroPage() {
       <Link to="/stories" className="back-nav -ml-1 pl-1">
         ← Stories
       </Link>
+      <p className="intro-state-eyebrow intro-state-eyebrow--open">Ready when you are</p>
       {p.secretHint ? (
-        <p className="text-xs uppercase tracking-[0.22em] text-parchment-200/55 font-sans mt-4 sm:mt-6 italic leading-relaxed">
+        <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] text-parchment-200/55 font-sans mt-2 sm:mt-3 italic leading-relaxed max-w-prose">
           {p.secretHint}
         </p>
       ) : null}
       {p.toneHint ? (
-        <p className="text-xs uppercase tracking-[0.3em] text-parchment-200/50 font-sans mt-4 sm:mt-6">
+        <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.26em] text-parchment-200/50 font-sans mt-4 sm:mt-5">
           {p.toneHint}
         </p>
       ) : null}
-      <h1 className="font-serif text-3xl sm:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
+      <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment-50 mt-2 mb-3 text-balance">
         {p.displayTitle}
       </h1>
       {p.continuationHint ? (
-        <p className="text-parchment-200/65 text-sm italic mb-3 leading-relaxed max-w-prose">
-          {p.continuationHint}
-        </p>
+        <p className="intro-continuation-hint mb-3">{p.continuationHint}</p>
       ) : null}
       <p className="text-parchment-100/85 text-base sm:text-lg mb-2 leading-[1.65] sm:leading-relaxed max-w-prose text-pretty">
         {p.displaySummary}
       </p>
-      <p className="text-parchment-200/65 italic mb-8 sm:mb-10 text-sm sm:text-base leading-relaxed max-w-prose">
+      <p className="text-parchment-200/60 italic mb-8 sm:mb-9 text-sm sm:text-base leading-relaxed max-w-prose">
         {p.roleHint}
       </p>
 
       {story.personalities && story.personalities.length > 0 ? (
         <>
-          <h2 className="font-serif text-xl sm:text-2xl text-parchment-50 mb-4">
-            Who will you be?
+          <h2 className="font-serif text-lg sm:text-2xl text-parchment-50 mb-4">
+            Who are you in this thread?
           </h2>
           <PersonalitySelector
             personalities={story.personalities}
@@ -198,13 +212,15 @@ export function StoryIntroPage() {
           />
         </>
       ) : (
-        <button
-          type="button"
-          className="btn btn-primary w-full sm:w-auto"
-          onClick={handleBeginWithoutPersonality}
-        >
-          Begin
-        </button>
+        <div className="intro-cta-stack">
+          <button
+            type="button"
+            className="btn btn-primary w-full sm:w-auto touch-manipulation"
+            onClick={handleBeginWithoutPersonality}
+          >
+            Begin
+          </button>
+        </div>
       )}
     </main>
   );

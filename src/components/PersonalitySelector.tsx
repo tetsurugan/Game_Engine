@@ -12,8 +12,8 @@ export function PersonalitySelector({ personalities, onConfirm }: Props) {
   );
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="grid gap-4 sm:gap-4 md:grid-cols-2">
+    <div className="flex flex-col gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4">
         {personalities.map((p) => {
           const active = p.id === selected;
           return (
@@ -21,9 +21,9 @@ export function PersonalitySelector({ personalities, onConfirm }: Props) {
               type="button"
               key={p.id}
               onClick={() => setSelected(p.id)}
-              className={`min-h-[5.75rem] text-left rounded-sm border p-4 sm:p-5 transition-colors duration-150 touch-manipulation ${
+              className={`min-h-[5.5rem] sm:min-h-[5.75rem] text-left rounded-sm border p-4 sm:p-5 transition-colors duration-150 touch-manipulation ${
                 active
-                  ? "border-vow-kept/70 bg-ink-700/70"
+                  ? "border-vow-kept/75 bg-ink-700/70 ring-2 ring-vow-kept/35 ring-offset-2 ring-offset-ink-900"
                   : "border-parchment-200/15 bg-ink-800/50 hover:border-parchment-200/40 active:border-parchment-200/50"
               }`}
             >
@@ -42,10 +42,10 @@ export function PersonalitySelector({ personalities, onConfirm }: Props) {
           );
         })}
       </div>
-      <div>
+      <div className="intro-cta-stack max-w-none sm:max-w-md">
         <button
           type="button"
-          className="btn btn-primary w-full sm:w-auto"
+          className="btn btn-primary w-full sm:w-auto touch-manipulation"
           disabled={!selected}
           onClick={() => selected && onConfirm(selected)}
         >

@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
+import {
+  selectContinueStory,
+  selectProfile,
+} from "../store/storyStoreSelectors";
 import { useStoryStore } from "../store/useStoryStore";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const profile = useStoryStore((s) => s.profile);
-  const continueStory = useStoryStore((s) => s.continueStory);
+  const profile = useStoryStore(selectProfile);
+  const continueStory = useStoryStore(selectContinueStory);
 
   const hasSave = !!profile.lastRuntime;
 

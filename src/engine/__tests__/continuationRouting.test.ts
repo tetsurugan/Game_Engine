@@ -97,7 +97,7 @@ describe("continuationRouting", () => {
     const r = evaluateStorySurfacing(sequel, emptyProfile(), {
       allStories: stories,
     });
-    expect(r.playerFacing.continuationHint).toBe('Continues from “The Anchor”');
+    expect(r.playerFacing.continuationHint).toBe('An echo of “The Anchor”');
   });
 
   it("respects playerContinuationHint override", () => {

@@ -473,9 +473,9 @@ export interface StoryDefinition {
   continuationOf?: StoryContinuationRef;
   /**
    * Optional full continuation line for browse/intro (e.g. “After the trial…”).
-   * When omitted and `continuationOf` is set, surfacing may synthesize
-   * “Continues from …” if the anchor exists in the registry passed to
-   * `evaluateStorySurfacing` / `getStoryBrowseState`.
+   * When omitted and `continuationOf` is set, surfacing may synthesize a soft
+   * lineage line (e.g. “An echo of …”) if the anchor exists in the registry
+   * passed to `evaluateStorySurfacing` / `getStoryBrowseState`.
    */
   playerContinuationHint?: string;
   /** Optional: branch family (e.g. holy vs dark sequel bucket). */

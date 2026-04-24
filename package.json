@@ -1,11 +1,12 @@
 {
   "name": "pov-project",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:gh-pages": "VITE_BASE_PATH=/Game_Engine/ npm run build && cp dist/index.html dist/404.html",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",

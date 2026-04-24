@@ -8,6 +8,15 @@ export {
   resolveContinuationPresentationHint,
 } from "./storyPlayerCopy";
 import type { PersistedProfile, StoryDefinition } from "./types";
+
+/**
+ * Stories shown on the **release** browse shelf (rumors / horizon / main list).
+ * `authoringAvailability: "in_dev"` stays in `storyRegistry` for tests and direct
+ * URLs, but is omitted here so the MVP anthology matches §1.1 of the freeze checklist.
+ */
+export function isReleaseBrowseStory(story: StoryDefinition): boolean {
+  return story.authoringAvailability !== "in_dev";
+}
 import type { StorySurfacingResult } from "./storyGateEvaluation";
 
 export type { EvaluateStorySurfacingOptions };

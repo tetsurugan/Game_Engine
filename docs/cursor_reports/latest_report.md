@@ -1,54 +1,34 @@
-# Latest implementation report
+# Latest report — MVP 0.1.0 ship + GitHub Pages
 
-## Task summary
+**Date:** 2026-04-24  
+**Task:** Tag the repo as **0.1.0** and enable **GitHub Pages** for **`tetsurugan/Game_Engine`**.
 
-**Browser + mobile-browser MVP readiness pass** — polish only (**MVP freeze** respected: no new story lanes, no engine expansion).
+## What shipped in tooling
 
-### Pages / components improved
+- **`vite.config.ts`** — `base` from **`VITE_BASE_PATH`** (default **`/`** local; **`/Game_Engine/`** for the project Pages URL).
+- **`src/app/router.tsx`** — **`basename`** derived from **`import.meta.env.BASE_URL`** so routes work under **`/Game_Engine/`**.
+- **`index.html`** — **`%BASE_URL%`** on favicon and manifest links.
+- **`public/manifest.webmanifest`** — **`start_url: "./"`** so PWA entry resolves next to the deployed manifest.
+- **`.github/workflows/deploy-github-pages.yml`** — on push to **`main`**: **`npm ci`**, **`npm test`**, production **`npm run build`** with **`VITE_BASE_PATH=/Game_Engine/`**, **`cp dist/index.html dist/404.html`** (SPA refresh), deploy via **GitHub Pages** artifacts.
+- **`package.json`** — version **0.1.0**, script **`build:gh-pages`**.
+- **`README.md`** — live URL and first-time **Settings → Pages → GitHub Actions** note.
 
-| Area | Changes |
-|------|---------|
-| **`StorySelectPage`** (`/stories`) | Section hierarchy: **`browse-section-label`** (underline); more vertical rhythm; rumor rows taller / larger type; teaser + main list spacing; shelf summaries **`line-clamp-6`** on small screens, full on **`sm:`**; **`text-balance`** on titles; locked cards slightly clearer opacity |
-| **`StoryIntroPage`** (`/stories/:id`) | Consistent **`back-nav`** tap area; rumor / teaser / locked / startable copy: **`leading-[1.65]`**, **`max-w-prose`**, **`text-balance`**; locked callout **`max-w-prose`** |
-| **`StoryPlayPage`** (`/play/:id`) | **`grid-cols-1`** explicit; **`gap-10`** mobile between narrative stack and vows/stats; extra **`pb-12`** on main; loading state spacing |
-| **`ProfilePage`** (`/profile`) | Section headers with divider; card padding; destructive **Erase** button separated / styled; **`back-nav`** hit area |
-| **`PlayNarrationBanner`** | Lighter chrome: **`border-l-4`** accent, **`rounded-md`**, **`max-w-[36rem]`**, adjusted padding (still clearly “engine narration,” not generic toast) |
-| **`ChoiceList`**, **`SceneCard`**, **`StoryHeader`**, **`EndingScreen`**, **`PersonalitySelector`**, **`VowPanel`** | Spacing, **`text-balance`**, tap **`touch-manipulation`** on ending actions; choices slightly taller min-height via CSS |
+## Live URL
 
-### Global CSS (`index.css`)
+**https://tetsurugan.github.io/Game_Engine/**
 
-- **`body`:** **`padding-top: env(safe-area-inset-top)`** (with existing horizontal safe-area)
-- **`page-shell`:** increased bottom safe-area padding
-- **`prose-story`:** ~**17px** mobile body, **`leading-[1.7]`**, **`max-w-[36rem]`**
-- **`choice-btn`:** **`min-h-[3.5rem]`** on mobile, relaxed leading
-- **`browse-section-label`:** shared shelf section styling
-
-### PWA-friendly (low-risk)
-
-- **`index.html`:** **`apple-mobile-web-app-capable`**, **`apple-mobile-web-app-status-bar-style`** (`black-translucent`)
-- **`README.md`:** browser support bullet updated for MVP 0.1 + Apple meta mention
-
-### Anthology identity preserved
-
-- Rumors / teasers / locked / secret / continuation hints / narration banner / profile echoes-marks-flags **unchanged in data flow** — only layout, typography, and spacing
-- No card system rewrite; no removal of surfacing states
-
-### Tests
-
-- No new tests (UX-only). **`npm test`**, **`npm run lint`**, **`npm run build`** pass.
-
-### Docs touched
-
-- **`latest_report.md`**, **`change_log.md`**, **`agent_handoff.md`**, **`CHATGPT_CODEBASE_BRIEFING.md`**, **`README.md`**
+(After the workflow runs successfully; first deploy may require enabling Pages in repo settings.)
 
 ## Next natural follow-up
 
-Execute **[`mvp_freeze_checklist.md`](../planning/mvp_freeze_checklist.md)** §1–§3 (manual device pass, registry/shelf honesty, any blocker fixes).
+Open **Actions** on the repo and confirm **Deploy GitHub Pages** is green; spot-check the live URL on phone. If you rename the repo, update **`VITE_BASE_PATH`**, workflow env, and **`build:gh-pages`** to match **`/<repo>/`**.
 
-## Files
+---
 
-| Action | Path |
-|--------|------|
-| Changed | `src/index.css`, `src/pages/StorySelectPage.tsx`, `StoryIntroPage.tsx`, `StoryPlayPage.tsx`, `ProfilePage.tsx` |
-| Changed | `src/components/PlayNarrationBanner.tsx`, `ChoiceList.tsx`, `SceneCard.tsx`, `StoryHeader.tsx`, `EndingScreen.tsx`, `PersonalitySelector.tsx`, `VowPanel.tsx` |
-| Changed | `index.html`, `README.md`, `docs/cursor_reports/*`, `docs/CHATGPT_CODEBASE_BRIEFING.md` |
+## Archive — copy / feel polish
+
+See **`change_log.md`** entry **2026-04-24 — Tiny copy / feel polish**.
+
+---
+
+*End of report.*

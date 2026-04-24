@@ -23,8 +23,8 @@ export function getStoryPlayerPresentation(
 
 /**
  * Optional one-line continuation framing for browse/intro (no engine jargon).
- * Uses `playerContinuationHint` when set; otherwise “Continues from …” from
- * the anchor story’s presentation title. Requires `allStories` to resolve the anchor.
+ * Uses `playerContinuationHint` when set; otherwise a soft lineage line from
+ * the anchor title (does not promise the anchor is playable as a prerequisite).
  */
 export function resolveContinuationPresentationHint(
   story: StoryDefinition,
@@ -37,5 +37,5 @@ export function resolveContinuationPresentationHint(
   const anchor = allStories.find((s) => s.id === story.continuationOf!.storyId);
   if (!anchor) return undefined;
   const title = getStoryPlayerPresentation(anchor).title;
-  return `Continues from “${title}”`;
+  return `An echo of “${title}”`;
 }

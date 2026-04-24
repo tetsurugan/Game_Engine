@@ -12,6 +12,7 @@ import {
   loadProfile,
   saveProfile,
   clearProfile,
+  createEmptyPersistedProfile,
   stripEphemeralNarrationTransport,
   toRuntimeProfileSnapshot,
 } from "../engine";
@@ -227,13 +228,7 @@ export const useStoryStore = create<StoryStoreState>((set, get) => ({
   clearAll: () => {
     clearProfile();
     set({
-      profile: {
-        globalEchoes: [],
-        completedEndings: {},
-        worldFlags: {},
-        unlockedModuleIds: [],
-        lastRuntime: null,
-      },
+      profile: createEmptyPersistedProfile(),
       runtime: null,
       currentStory: null,
       resolvedEnding: null,

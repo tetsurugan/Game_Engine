@@ -2,28 +2,33 @@ import type { PersistedProfile } from "./types";
 
 const STORAGE_KEY = "pov.profile.v1";
 
-const emptyProfile: PersistedProfile = {
-  globalEchoes: [],
-  completedEndings: {},
-  worldFlags: {},
-  unlockedModuleIds: [],
-  worldlineBranches: {},
-  worldConsequenceMarks: [],
-  closedHistoryMarks: [],
-  lastRuntime: null,
-};
+/** Canonical empty profile — use after erase and when storage is missing (keeps shape aligned with `loadProfile`). */
+export function createEmptyPersistedProfile(): PersistedProfile {
+  return {
+    globalEchoes: [],
+    completedEndings: {},
+    worldFlags: {},
+    unlockedModuleIds: [],
+    worldlineBranches: {},
+    worldConsequenceMarks: [],
+    closedHistoryMarks: [],
+    lastRuntime: null,
+  };
+}
 
 function isBrowser(): boolean {
   return typeof window !== "undefined" && !!window.localStorage;
 }
 
 export function loadProfile(): PersistedProfile {
-  if (!isBrowser()) return { ...emptyProfile };
+  if (!isBrowser()) return createEmptyPersistedProfile();
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...emptyProfile };
+    if (!raw) return createEmptyPersistedProfile();
     const parsed = JSON.parse(raw) as Partial<PersistedProfile>;
+    const base = createEmptyPersistedProfile();
     return {
+      ...base,
       globalEchoes: parsed.globalEchoes ?? [],
       completedEndings: parsed.completedEndings ?? {},
       worldFlags: parsed.worldFlags ?? {},
@@ -34,7 +39,7 @@ export function loadProfile(): PersistedProfile {
       lastRuntime: parsed.lastRuntime ?? null,
     };
   } catch {
-    return { ...emptyProfile };
+    return createEmptyPersistedProfile();
   }
 }
 

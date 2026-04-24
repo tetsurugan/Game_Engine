@@ -1,5 +1,53 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-24 — Ship 0.1.0 + GitHub Pages (`Game_Engine`)
+
+**Summary:** **`package.json`** version **0.1.0**. **Vite** `base` from **`VITE_BASE_PATH`** (default `/`; **`/Game_Engine/`** for Pages). **`createBrowserRouter`** **`basename`** from **`import.meta.env.BASE_URL`**. **`index.html`** `%BASE_URL%` for favicon + manifest; **`manifest.webmanifest`** `start_url: "./"`. **`.github/workflows/deploy-github-pages.yml`** — `npm ci`, `npm test`, `npm run build` with **`VITE_BASE_PATH=/Game_Engine/`**, **`cp dist/index.html dist/404.html`**, **`actions/deploy-pages`**. **`npm run build:gh-pages`** helper. **README** Pages URL + Settings note.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
+## 2026-04-24 — Tiny copy / feel polish (shelf, intro, play, ending, profile)
+
+**Summary:** **Player-facing wording only** — no story edits, no branches, no engine logic. **`StorySelectPage`:** hero + kickers + row eyebrows (**Ready** / **Waiting** / **Secret · waiting**). **`StoryIntroPage`:** hidden/rumor/teaser/locked/startable copy; **What it’s waiting on**; **Ready when you are**; personality heading. **`StoryPlayPage`:** loading + lost-scene copy. **`ChoiceList`:** empty state. **`PlayNarrationBanner`:** human labels for pressured post-choice / arrival (not raw kind strings). **`EndingScreen`:** **Closing**, **Echoes that remain**, button labels. **`ProfilePage`:** subtitle, section/helper/confirm copy. **Tests:** unchanged count, all pass.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
+## 2026-04-24 — MVP stability / release-prep (profile erase + browse shelf honesty)
+
+**Summary:** **Release-bar pass** — `npm test` / `npm run lint` / `npm run build` clean; **`validateStoryRegistryAuthoring(storyRegistry)`** still **0 errors** via tests. **Fix:** **`createEmptyPersistedProfile()`** in **`storage.ts`** — **`loadProfile`** + **`useStoryStore.clearAll`** use the same full empty shape (**`worldlineBranches`**, **`worldConsequenceMarks`**, **`closedHistoryMarks`** no longer missing after erase). **`isReleaseBrowseStory()`** in **`storyPresentation.ts`** — **`StorySelectPage`** lists only non-**`in_dev`** modules (**`allStories`** still full registry for continuation hints). **`storage.test.ts`**. **No** new story content or lanes.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
+## 2026-04-21 — Anthology shelf / discovery polish (browse + intro curation)
+
+**Summary:** **Release curation only** — no new story content, no new lanes, no Street RPG. **`StorySelectPage`:** curatorial hero + **section kickers** (rumors / horizon / shelf); **main shelf** sorted **unlocked then locked**, registry order within bands; row eyebrows **Open** / **Held closed** / **Secret · held closed**; **continuation** via **`shelf-continuation-hint`**; **locked rows** drop **`roleHint`**; removed redundant bottom locked line. **`StoryIntroPage`:** **`intro-state-eyebrow`** variants for **playable / rumor / teaser / locked / secret / hidden**; tightened threshold copy; locked **“Why it waits”**; **`intro-continuation-hint`**. **`storyPlayerCopy`:** synthesized continuation **`An echo of “…”`** (replaces **`Continues from`** for default hints); test + types JSDoc. **`index.css`:** browse/intro utilities for section intro, kickers, eyebrows, continuation hints.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
+## 2026-04-21 — Browser / mobile MVP polish pass (checklist: pages + components + CSS)
+
+**Summary:** **Release polish only** — no new lanes, no content expansion, no Street RPG. **`StorySelectPage`:** region **dividers**, **title-before-continuation** hierarchy, **teaser line-clamp**, **shelf** gaps + **52px-class** row targets. **`StoryIntroPage`:** **intro-cta-stack**, tighter **above-fold** rhythm, clearer **rumor/secret/locked** labels. **`StoryPlayPage`:** **`page-shell--play`** bottom inset; **scrollable** vow/stat rail on **`md+`**. **`ProfilePage`:** **`profile-section-heading`**, vertical chip lists on narrow screens, **danger zone** for erase. **Components:** **`StoryHeader`**, **`SceneCard`**, **`ChoiceList`**, **`PlayNarrationBanner`**, **`EndingScreen`**, **`PersonalitySelector`** (selection ring), **`VowPanel`**, **`StatPanel`**. **`index.css`:** safe-area **`calc`** padding, browse/profile utilities, **choice** focus + disabled, prose **`break-words`**. **`index.html`:** **`apple-mobile-web-app-title`**.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
+## 2026-04-23 — Street RPG / Forgotten Trajectory POV integration planning package
+
+**Summary:** Added **post-MVP add-on** planning docs for **Street RPG** (dual protagonist, patricide spine, aftermath families A–D, open canon seams, integration doctrine). **Files:** `docs/planning/story_concepts/street_rpg_core.md`, `street_rpg_aftermath_families.md`, `street_rpg_open_canon_seams.md`, `street_rpg_pov_integration_note.md`. **`story_registry.md`:** concept-archive links + **Street RPG** appendix table (canonical anthology module list **unchanged**). **`latest_report.md`** updated for this synthesis; **no** story rewrite or new endings invented.
+
+**Reports:** `docs/cursor_reports/latest_report.md`
+
+---
+
 ## 2026-04-21 — Browser + mobile MVP readiness pass (primary pages, no new lanes)
 
 **Summary:** **UX polish** for **desktop + mobile browser**: **`StorySelectPage`** (section labels, spacing, rumor/teaser/shelf readability, **`line-clamp-6`** on shelf summaries for small viewports), **`StoryIntroPage`**, **`StoryPlayPage`** (grid gap, bottom padding), **`ProfilePage`** (section dividers, cards, erase control). Components: **`PlayNarrationBanner`**, **`ChoiceList`**, **`SceneCard`**, **`StoryHeader`**, **`EndingScreen`**, **`PersonalitySelector`**, **`VowPanel`**. **`index.css`**: safe-area **top** on `body`, **`prose-story`** / **`choice-btn`** / **`browse-section-label`**, **`page-shell`** bottom inset. **`index.html`**: **`apple-mobile-web-app-*`**. **`README`** browser note. Docs: **`latest_report`**, **`agent_handoff`**, **`CHATGPT_CODEBASE_BRIEFING`**. **MVP freeze:** no content lanes or engine features.

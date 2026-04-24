@@ -14,8 +14,8 @@ export function StatPanel({ story, variables }: Props) {
   if (numericVars.length === 0) return null;
 
   return (
-    <aside className="rounded-sm border border-parchment-200/10 bg-ink-800/40 p-3 sm:p-4">
-      <h3 className="text-xs uppercase tracking-[0.25em] text-parchment-200/50 font-sans mb-3">
+    <aside className="rounded-sm border border-parchment-200/10 bg-ink-800/40 p-4 sm:p-4">
+      <h3 className="text-[0.65rem] sm:text-xs uppercase tracking-[0.22em] sm:tracking-[0.25em] text-parchment-200/50 font-sans mb-3">
         Bearing
       </h3>
       <ul className="space-y-1.5 font-sans text-sm">

@@ -2,7 +2,7 @@
 
 **Doctrine:** [`design_doctrine.md`](design_doctrine.md). **MVP 0.1 scope / freeze:** [`mvp_freeze_checklist.md`](mvp_freeze_checklist.md). **Personality / anchors / relational variants:** [`personality_continuity_doctrine.md`](personality_continuity_doctrine.md). **Private judgments (event → access → verdict → tendency):** [`relational_verdicts_doctrine.md`](relational_verdicts_doctrine.md). **Cross-world / cross-era inheritance:** [`world_connection_doctrine.md`](world_connection_doctrine.md). **Story class** is **internal (engine only)**—never the primary player-facing label. **Era** and **template** organize the **anthology**; see [`eras_and_scales.md`](eras_and_scales.md).
 
-**Concept archive:** [`story_concepts/verge_clan_mara_verge.md`](story_concepts/verge_clan_mara_verge.md) (**Mara Verge** / full clan saga — planning); **shipped proof stub:** `verge_mara_anchor`. [`story_concepts/gyre_mythic_recurrence.md`](story_concepts/gyre_mythic_recurrence.md) (**Gyre**). [`story_concepts/rumor_girl_future_locked_prequel.md`](story_concepts/rumor_girl_future_locked_prequel.md) — **future-locked prequel** to **`rumor_girl`** (planning only).
+**Concept archive:** [`story_concepts/verge_clan_mara_verge.md`](story_concepts/verge_clan_mara_verge.md) (**Mara Verge** / full clan saga — planning); **shipped proof stub:** `verge_mara_anchor`. [`story_concepts/gyre_mythic_recurrence.md`](story_concepts/gyre_mythic_recurrence.md) (**Gyre**). [`story_concepts/rumor_girl_future_locked_prequel.md`](story_concepts/rumor_girl_future_locked_prequel.md) — **future-locked prequel** to **`rumor_girl`** (planning only). **Street RPG / Forgotten Trajectory** (post-MVP add-on planning): [`story_concepts/street_rpg_core.md`](story_concepts/street_rpg_core.md), [`story_concepts/street_rpg_aftermath_families.md`](story_concepts/street_rpg_aftermath_families.md), [`story_concepts/street_rpg_open_canon_seams.md`](story_concepts/street_rpg_open_canon_seams.md), [`story_concepts/street_rpg_pov_integration_note.md`](story_concepts/street_rpg_pov_integration_note.md); registry row below.
 
 Canonical list of modules. Update when adding/removing entries, changing **gates**, **dependencies**, or **player copy**.
 
@@ -80,7 +80,7 @@ The shell uses **`getStoryPlayerPresentation`** (`src/engine/storyPresentation.t
 
 **Browse visibility:** `evaluateStorySurfacing(story, profile, { allStories? })` (via `getStoryBrowseState`) — gate metadata, `preDiscoverySurfacing` (`hidden` / `rumor` / `teaser`), `listPresentationStyle` (`standard` / `secret`), `lockedUntilEchoes`. **`unlockCategory`** is planning / analytics, not a player taxonomy string.
 
-**Continuation / variant routing (engine):** `src/engine/continuationRouting.ts` indexes **`continuationOf`** and groups **`variantGroup`**; surfacing tiers still come from **`evaluateStorySurfacing`** only. Optional **`playerContinuationHint`** or synthesized “Continues from …” appears in **`playerFacing.continuationHint`** when the full registry is passed. Doctrine: not every row in this table implies a direct sequel — see [`branch_scope_doctrine.md`](branch_scope_doctrine.md). When documenting **Depends on**, name the **connection mode** (myth, witness, consequence, etc.) where helpful — see [`world_connection_doctrine.md`](world_connection_doctrine.md).
+**Continuation / variant routing (engine):** `src/engine/continuationRouting.ts` indexes **`continuationOf`** and groups **`variantGroup`**; surfacing tiers still come from **`evaluateStorySurfacing`** only. Optional **`playerContinuationHint`** or synthesized **“An echo of …”** appears in **`playerFacing.continuationHint`** when the full registry is passed. Doctrine: not every row in this table implies a direct sequel — see [`branch_scope_doctrine.md`](branch_scope_doctrine.md). When documenting **Depends on**, name the **connection mode** (myth, witness, consequence, etc.) where helpful — see [`world_connection_doctrine.md`](world_connection_doctrine.md).
 
 **World consequence depth (engine):** `src/engine/worldConsequences.ts` merges **`worldlineCommit`**, **`worldConsequenceMarks`**, **`closeHistoryMarks`** from endings into **`PersistedProfile`**. Gates on **`StoryDefinition`** (`requiresWorldlineBranch`, `excludesWorldlineBranches`, mark requires/excludes, **`blockedWhenHistoryClosed`**) are evaluated only in **`evaluateStorySurfacing`**. Complements **`worldFlags`**; does not replace them.
 
@@ -101,3 +101,17 @@ The shell uses **`getStoryPlayerPresentation`** (`src/engine/storyPresentation.t
 ## Mutual exclusivity
 
 Document **closes** / **excludes** in **Unlocks / closes** and detail in **`unlock_matrix.md`**.
+
+---
+
+## Street RPG (Forgotten Trajectory) — add-on planning (not shipped in MVP 0.1)
+
+**Note:** This anchor lives in the **Forgotten Trajectory / Street RPG** narrative repo; this monorepo holds **POV integration** planning only. **Does not** replace Paladin, Gyre, Verge, Rumor Girl, or other core lanes.
+
+| Anchor / title | ID | Tone / lane | MVP? | Fixed-spine heavy? | Large aftermath? | Systemic / secret layer |
+|----------------|----|------------|------|--------------------|-----------------|------------------------|
+| **Street RPG (Forgotten Trajectory)** | `street_rpg` | Urban dual-protagonist, patricide, **earned** legacy | **Post-MVP** add-on anchor (per current planning) | **Yes** (patricide + desecration + aftermath pivot) | **Yes** (redemption, family, community, class paths) | **Unlocked / seam** — Construct, RT, **ambiguous** message not locked for core (see [`story_concepts/street_rpg_open_canon_seams.md`](story_concepts/street_rpg_open_canon_seams.md)) |
+
+**Links:** [`story_concepts/street_rpg_core.md`](story_concepts/street_rpg_core.md) · [`story_concepts/street_rpg_aftermath_families.md`](story_concepts/street_rpg_aftermath_families.md) · [`story_concepts/street_rpg_open_canon_seams.md`](story_concepts/street_rpg_open_canon_seams.md) · [`story_concepts/street_rpg_pov_integration_note.md`](story_concepts/street_rpg_pov_integration_note.md)
+
+**Status:** Planning / integration — implementation scope not asserted here beyond what game docs state. When a seam in `street_rpg_open_canon_seams.md` locks, update this section or the main module table as appropriate.

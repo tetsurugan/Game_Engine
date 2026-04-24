@@ -38,17 +38,109 @@
 
 @layer components {
   .prose-story p {
-    @apply text-[1.0625rem] sm:text-lg leading-[1.7] sm:leading-relaxed text-parchment-100/90 mb-4 sm:mb-4 max-w-[36rem] w-full text-pretty;
+    @apply text-[1.0625rem] sm:text-lg leading-[1.72] sm:leading-relaxed text-parchment-100/90 mb-4 last:mb-0 max-w-[36rem] w-full text-pretty break-words;
   }
 
   .page-shell {
-    @apply mx-auto px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-10;
-    padding-bottom: max(2.75rem, env(safe-area-inset-bottom, 0px));
+    @apply mx-auto px-4 pt-6 sm:px-6 sm:pt-10;
+    padding-bottom: max(3.25rem, calc(env(safe-area-inset-bottom, 0px) + 1.5rem));
+  }
+
+  @media (min-width: 640px) {
+    .page-shell {
+      padding-bottom: max(3rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem));
+    }
+  }
+
+  /** Extra bottom inset on play flow (choices + browser chrome). */
+  .page-shell--play {
+    padding-bottom: max(4rem, calc(env(safe-area-inset-bottom, 0px) + 2rem));
   }
 
   /** Section label for browse shelf (rumors / teasers / main). */
   .browse-section-label {
-    @apply text-xs uppercase tracking-[0.28em] text-parchment-200/45 font-sans pb-2 mb-4 border-b border-parchment-200/10 scroll-mt-4;
+    @apply text-[0.7rem] sm:text-xs uppercase tracking-[0.22em] sm:tracking-[0.28em] text-parchment-200/50 font-sans pb-2.5 mb-4 sm:mb-5 scroll-mt-20;
+    border-bottom: 1px solid rgb(220 207 176 / 0.12);
+  }
+
+  /** Subtle divider between browse regions (rumors / horizon / shelf). */
+  .browse-region-divider {
+    @apply h-px w-full max-w-xl my-8 sm:my-10;
+    background-color: rgb(220 207 176 / 0.1);
+  }
+
+  /** Wrap section label + curatorial kicker for browse regions. */
+  .browse-section-intro {
+    @apply mb-8 sm:mb-10;
+  }
+
+  .browse-section-intro .browse-section-label {
+    @apply mb-2 sm:mb-2.5;
+  }
+
+  /** One-line curatorial context under a browse section title. */
+  .browse-section-kicker {
+    @apply text-[0.8125rem] sm:text-sm text-parchment-200/45 font-sans leading-relaxed max-w-md pl-0.5;
+  }
+
+  /** Shelf row: playable vs held — subtle, not a product badge. */
+  .browse-row-eyebrow {
+    @apply text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.22em] font-sans mb-2;
+  }
+
+  .browse-row-eyebrow--open {
+    @apply text-vow-kept/75;
+  }
+
+  .browse-row-eyebrow--held {
+    @apply text-parchment-200/40;
+  }
+
+  /** Intro threshold: state line (rumor / horizon / held / open). */
+  .intro-state-eyebrow {
+    @apply text-[0.65rem] sm:text-xs uppercase tracking-[0.26em] font-sans mt-4 sm:mt-5 mb-2;
+  }
+
+  /** Parchment 200 @ 48% — avoid `text-parchment-200/48` in `@apply` (utility not generated when only referenced here). */
+  .intro-state-eyebrow--whisper {
+    color: rgb(220 207 176 / 0.48);
+  }
+
+  .intro-state-eyebrow--horizon {
+    @apply text-parchment-200/50;
+  }
+
+  .intro-state-eyebrow--held {
+    @apply text-vow-strained/85;
+  }
+
+  .intro-state-eyebrow--secret {
+    @apply text-parchment-200/45;
+  }
+
+  .intro-state-eyebrow--open {
+    @apply text-vow-kept/75;
+  }
+
+  .intro-state-eyebrow--hidden {
+    @apply text-parchment-200/45;
+  }
+
+  /** Continuation / lineage — always secondary to title and summary. */
+  .shelf-continuation-hint,
+  .intro-continuation-hint {
+    @apply text-parchment-200/45 text-[0.75rem] sm:text-[0.8125rem] italic leading-relaxed max-w-prose;
+  }
+
+  /** Profile / settings-style section headings. */
+  .profile-section-heading {
+    @apply text-[0.7rem] sm:text-xs uppercase tracking-[0.24em] sm:tracking-[0.28em] text-parchment-200/55 font-sans mb-3 pb-2;
+    border-bottom: 1px solid rgb(220 207 176 / 0.12);
+  }
+
+  /** Intro / threshold primary actions — consistent vertical rhythm on narrow screens. */
+  .intro-cta-stack {
+    @apply flex flex-col gap-3 w-full max-w-md;
   }
 
   .back-nav {
@@ -68,14 +160,18 @@
   }
 
   .choice-btn {
-    @apply w-full min-h-[3.5rem] sm:min-h-[3.25rem] text-left px-4 py-4 sm:px-5 sm:py-4 rounded-sm
+    @apply w-full min-h-[3.5rem] sm:min-h-[3.25rem] text-left px-4 py-3.5 sm:px-5 sm:py-4 rounded-sm
       border border-parchment-200/20 bg-ink-800/60
       hover:bg-ink-700 hover:border-parchment-200/50
       active:bg-ink-700/80 transition-colors duration-150 text-parchment-100
-      font-serif text-base sm:text-lg leading-relaxed sm:leading-snug touch-manipulation select-none;
+      font-serif text-[1.0625rem] sm:text-lg leading-snug sm:leading-snug touch-manipulation select-none;
   }
 
   .choice-btn[disabled] {
-    @apply opacity-40 cursor-not-allowed hover:bg-ink-800/60 hover:border-parchment-200/20 active:bg-ink-800/60;
+    @apply opacity-45 cursor-not-allowed hover:bg-ink-800/60 hover:border-parchment-200/20 active:bg-ink-800/60 border-parchment-200/15;
+  }
+
+  .choice-btn:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-vow-kept/45;
   }
 }

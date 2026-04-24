@@ -54,9 +54,23 @@ npm run test    # Vitest: gates, conditions, profile writes, authoring validatio
 npm run test:watch
 ```
 
-Progress is persisted to `localStorage` under the key `pov.profile.v1`.
+Progress is persisted to `localStorage` under the key `pov.profile.v1`. **Erase profile** resets the full in-memory shape (including worldlines, consequence marks, and closed-history marks) via **`createEmptyPersistedProfile`**. The **`/stories`** shelf lists **shipped** anthology modules only; **`in_dev`** engine labs remain in the codebase for tests/smoke and can still be opened by direct URL if needed.
 
-**Browser support (MVP 0.1):** Target is **desktop and mobile browsers** (readable line length, **44px-class** tap targets on primary actions and choices, safe-area insets on body, `100dvh` where helpful). A minimal **Web App Manifest** (`public/manifest.webmanifest`) plus **`apple-mobile-web-app-*`** meta tags support “Add to Home Screen” where the OS allows it; there is **no** offline service worker unless you add one later.
+**Browser support (MVP 0.1):** Target is **desktop and mobile browsers** (readable line length, **44px+** tap targets on primary actions and **~56px-class** choice buttons on small screens, safe-area-aware **`page-shell`** padding including **`page-shell--play`** on `/play`, `100dvh` where helpful). A minimal **Web App Manifest** (`public/manifest.webmanifest`) plus **`apple-mobile-web-app-*`** meta tags (including a short **home-screen title**) support “Add to Home Screen” where the OS allows it; there is **no** offline service worker unless you add one later.
+
+### GitHub Pages (public 0.1 build)
+
+Live site: **[https://tetsurugan.github.io/Game_Engine/](https://tetsurugan.github.io/Game_Engine/)**
+
+Pushes to **`main`** run **Deploy GitHub Pages** (`.github/workflows/deploy-github-pages.yml`): test, build with base path `/Game_Engine/`, copy `index.html` → `404.html` for SPA refresh, publish to Pages.
+
+**First-time setup:** GitHub repo **Settings → Pages → Build and deployment → Source: GitHub Actions** (pick the *Deploy GitHub Pages* workflow if prompted).
+
+Local build that matches Pages asset paths (macOS/Linux):
+
+```bash
+npm run build:gh-pages
+```
 
 ---
 
