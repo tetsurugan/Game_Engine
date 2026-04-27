@@ -66,6 +66,8 @@ Pushes to **`main`** run **Deploy GitHub Pages** (`.github/workflows/deploy-gith
 
 **First-time setup:** GitHub repo **Settings → Pages → Build and deployment → Source: GitHub Actions** (pick the *Deploy GitHub Pages* workflow if prompted).
 
+**If the live site is a blank white page:** Pages is almost certainly still set to **Deploy from a branch** (publishing the raw repo `index.html` with `src="/src/main.tsx"`, which 404s). Switch **Source** to **GitHub Actions**, then **Actions → Deploy GitHub Pages → Run workflow** (or push to `main`). A correct deploy serves **`/Game_Engine/assets/*.js`**, not `/src/main.tsx`.
+
 Local build that matches Pages asset paths (macOS/Linux):
 
 ```bash
