@@ -62,15 +62,11 @@ Progress is persisted to `localStorage` under the key `pov.profile.v1`. **Erase 
 
 Live site: **[https://tetsurugan.github.io/Game_Engine/](https://tetsurugan.github.io/Game_Engine/)**
 
-Pushes to **`main`** run **Deploy GitHub Pages**: test, **`npm run build`** with **`VITE_BASE_PATH=/Game_Engine/`**, copy **`404.html`** for SPA routing, then push **`dist/`** to the **`gh-pages`** branch (**`peaceiris/actions-gh-pages`**).
+Pushes to **`main`** run **Deploy GitHub Pages** (`.github/workflows/deploy-github-pages.yml`): **`npm install`** (not `npm ci`, for reliable CI installs), **`npm test`**, **`npm run build`** with **`VITE_BASE_PATH=/Game_Engine/`**, **`404.html`** copy for SPA routing, then **GitHub’s** **`upload-pages-artifact`** + **`deploy-pages`** (same class of pipeline as a working Vite portfolio on Pages).
 
-**Where to pick the branch (Pages UI):** **Settings → Pages** → section **Build and deployment** → **Source** = *Deploy from a branch* → row **Branch** → **first dropdown** = branch name → choose **`gh-pages`** (not **`main`**) → **second dropdown** = **`/ (root)`**.
+**Pages settings:** **Settings → Pages → Build and deployment → Source: GitHub Actions** (not “Deploy from a branch”). First run may need **Settings → Actions → General → Workflow permissions → Read and write** if anything in the job must push/configure the environment.
 
-**If `gh-pages` is not in the list:** the deploy workflow hasn’t succeeded yet. On the repo go to **Settings → Actions → General → Workflow permissions** and set **Workflow permissions** to **Read and write permissions** (the default token must be allowed to push the `gh-pages` branch). Then **Actions → Deploy GitHub Pages → Run workflow** and wait for green; refresh the Pages screen and **`gh-pages`** should appear.
-
-Do **not** leave Pages on **`main` / (root)**—that serves the raw repo `index.html` (**blank page**).
-
-After the first workflow run, wait a minute and hard-refresh. **View Page Source** should show **`/Game_Engine/assets/…js`**, not **`/src/main.tsx`**.
+**Sanity check:** **View Page Source** on the live URL should show **`/Game_Engine/assets/…js`**, not **`/src/main.tsx`**.
 
 Local build that matches Pages asset paths (macOS/Linux):
 

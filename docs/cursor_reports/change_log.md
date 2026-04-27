@@ -1,5 +1,11 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-27 — GitHub Pages: back to Actions artifact deploy + `npm install`
+
+**Summary:** Workflow uses **`npm install`** (not **`npm ci`**) for CI parity with a working Vite portfolio pipeline; **`configure-pages`**, **`upload-pages-artifact`**, **`deploy-pages`**. **README** / **briefing**: Pages source = **GitHub Actions** again.
+
+---
+
 ## 2026-04-27 — GitHub Pages: deploy via `gh-pages` branch (peaceiris)
 
 **Summary:** Replaced **`upload-pages-artifact` / `deploy-pages`** workflow with **`peaceiris/actions-gh-pages`** pushing **`dist/`** to branch **`gh-pages`**. **Pages** must use **Deploy from branch → `gh-pages` / (root)** — **`main`** was still serving unbuilt **`index.html`** (blank site). **README** + **CHATGPT_CODEBASE_BRIEFING** updated.
