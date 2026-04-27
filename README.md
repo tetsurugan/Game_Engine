@@ -62,11 +62,12 @@ Progress is persisted to `localStorage` under the key `pov.profile.v1`. **Erase 
 
 Live site: **[https://tetsurugan.github.io/Game_Engine/](https://tetsurugan.github.io/Game_Engine/)**
 
-Pushes to **`main`** run **Deploy GitHub Pages** (`.github/workflows/deploy-github-pages.yml`): test, build with base path `/Game_Engine/`, copy `index.html` → `404.html` for SPA refresh, publish to Pages.
+Pushes to **`main`** run **Deploy GitHub Pages**: test, **`npm run build`** with **`VITE_BASE_PATH=/Game_Engine/`**, copy **`404.html`** for SPA routing, then push **`dist/`** to the **`gh-pages`** branch (**`peaceiris/actions-gh-pages`**).
 
-**First-time setup:** GitHub repo **Settings → Pages → Build and deployment → Source: GitHub Actions** (pick the *Deploy GitHub Pages* workflow if prompted).
+**Pages settings (required):** **Settings → Pages → Build and deployment → Source: Deploy from a branch** → Branch **`gh-pages`** / folder **`/ (root)`**.  
+(Do **not** use **`main`** as the Pages branch—that publishes unbuilt `index.html` and causes a **blank page** because `/src/main.tsx` is not on the CDN.)
 
-**If the live site is a blank white page:** Pages is almost certainly still set to **Deploy from a branch** (publishing the raw repo `index.html` with `src="/src/main.tsx"`, which 404s). Switch **Source** to **GitHub Actions**, then **Actions → Deploy GitHub Pages → Run workflow** (or push to `main`). A correct deploy serves **`/Game_Engine/assets/*.js`**, not `/src/main.tsx`.
+After the first workflow run, wait a minute and hard-refresh. **View Page Source** should show **`/Game_Engine/assets/…js`**, not **`/src/main.tsx`**.
 
 Local build that matches Pages asset paths (macOS/Linux):
 

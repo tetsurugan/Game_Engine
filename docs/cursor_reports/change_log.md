@@ -1,5 +1,13 @@
 # Change log (Cursor implementation reports)
 
+## 2026-04-27 — GitHub Pages: deploy via `gh-pages` branch (peaceiris)
+
+**Summary:** Replaced **`upload-pages-artifact` / `deploy-pages`** workflow with **`peaceiris/actions-gh-pages`** pushing **`dist/`** to branch **`gh-pages`**. **Pages** must use **Deploy from branch → `gh-pages` / (root)** — **`main`** was still serving unbuilt **`index.html`** (blank site). **README** + **CHATGPT_CODEBASE_BRIEFING** updated.
+
+**Reports:** `docs/cursor_reports/latest_report.md` (light)
+
+---
+
 ## 2026-04-24 — Ship 0.1.0 + GitHub Pages (`Game_Engine`)
 
 **Summary:** **`package.json`** version **0.1.0**. **Vite** `base` from **`VITE_BASE_PATH`** (default `/`; **`/Game_Engine/`** for Pages). **`createBrowserRouter`** **`basename`** from **`import.meta.env.BASE_URL`**. **`index.html`** `%BASE_URL%` for favicon + manifest; **`manifest.webmanifest`** `start_url: "./"`. **`.github/workflows/deploy-github-pages.yml`** — `npm ci`, `npm test`, `npm run build` with **`VITE_BASE_PATH=/Game_Engine/`**, **`cp dist/index.html dist/404.html`**, **`actions/deploy-pages`**. **`npm run build:gh-pages`** helper. **README** Pages URL + Settings note.
